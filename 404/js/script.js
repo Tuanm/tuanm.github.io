@@ -14,7 +14,7 @@ loop();
 
 
 const config = {
-  src: '../img/open-peeps-sheet.png',
+  src: '../404/img/open-peeps-sheet.png',
   rows: 15,
   cols: 7
 };
