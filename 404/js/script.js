@@ -3,7 +3,7 @@ console.log('%c# Crowd Simulator', 'font-family: Consolas; font-size: 16px; colo
 console.log('A Pen created on CodePen.io. Original URL:');
 console.log('https://codepen.io/zadvorsky/pen/xxwbBQV')
 
-var f = ['404 Not Found!', ''];
+var f = ['404NotFound!', ''];
 
 function loop() {
     location.hash = f[Math.floor((Date.now() / 100) % f.length)];
