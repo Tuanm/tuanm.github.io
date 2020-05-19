@@ -1,3 +1,8 @@
+console.clear();
+console.log('%c# cat & mouse', 'font-family: Consolas; font-size: 16px; color: #66ff99;');
+console.log('A Pen created on CodePen.io. Original URL:');
+console.log('https://codepen.io/louflan/pen/LYpggXQ');
+
 var pupil = document.getElementsByClassName("pupil");
 document.onmousemove = function () {
 	var x = (event.clientX * 8) / window.innerWidth + "%";
