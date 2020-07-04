@@ -23,7 +23,7 @@ function getXepLoai(ketQua) {
 var t = setInterval(function() {
     document.getElementById("ketqua").style.display = "none";
     document.getElementById("xeploai").style.display = "none";
-}, 5000);
+}, 10000);
 
 var tinhDiem = document.getElementById("tinhdiem");
 
@@ -44,6 +44,6 @@ tinhDiem.onclick = function() {
 
     document.getElementById("ketqua").innerHTML = "</br>" + "Điểm tổng kết" + "</br>" + ketQua + "</br>";
     document.getElementById("ketqua").style.display = "inline";
-    document.getElementById("xeploai").innerHTML = "</br>" + "Xếp loại" + "</br>" + xepLoai;
+    document.getElementById("xeploai").innerHTML = "</br>" + "Xếp loại" + "</br>" + xepLoai + "</br>";
     document.getElementById("xeploai").style.display = "inline";
 }
