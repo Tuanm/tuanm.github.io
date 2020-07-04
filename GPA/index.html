@@ -1,0 +1,78 @@
+<head>
+  <title>Tính GPA</title>
+  <style>
+    body {
+      font-size: 20px;
+      font-family: Consolas;
+      background-color: #c6fc03;
+    }
+    h1 {
+      font-size: 60px;
+    }
+    a {
+      text-decoration: none;
+      color: green;
+    }
+  </style>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <center><h1>Tính điểm cùng anh <a href="https://m.me/Teemoing">Tuấn</a></h1></center>
+  </header>
+  <main>
+<div class="container">
+  <div class="row">
+    <div class="col-25">
+      <label for="hocphan">Tên học phần</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="hocphan" name="hocphan" placeholder="Giải tích I">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="tinchi">Số tín chỉ tích luỹ</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="tinchi" name="tinchi" placeholder="3">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="trongso">Trọng số quá trình</label>
+    </div>
+    <div class="col-75">
+      <select id="trongso" name="trongso">
+        <option value="trongso3">0.3</option>
+        <option value="trongso2">0.2</option>
+        <option value="trongso0">0</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="quatrinh">Điểm quá trình</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="quatrinh" name="quatrinh" placeholder="10">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="ketthuc">Điểm kết thúc</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="ketthuc" name="ketthuc" placeholder="10">
+    </div>
+  </div>
+  <div><br></div>
+  <div class="row">
+    <input type="submit" value="Tính điểm tổng kết">
+  </div>
+</div>
+  </main>
+  <footer>
+  </footer>
+  <script src="./script.js">
+</body>
