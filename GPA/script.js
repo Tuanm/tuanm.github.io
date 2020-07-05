@@ -35,6 +35,7 @@ tinhDiem.onclick = function() {
     var diemKT = document.getElementById("ketthuc").value;
 
     if (tenHocPhan == "" || soTinChi == "" || diemQT == "" || diemKT == "") {
+        alert("Quên gì rồi bạn ơi!!!");
         document.getElementById("ketqua").style.display = "none";
         document.getElementById("xeploai").style.display = "none";
         return;
