@@ -149,3 +149,9 @@ tinhDiem.onclick = function() {
     themDanhSach();
     inDanhSach();
 }
+
+var quangCao = document.getElementById("quangcao");
+
+quangCao.onclick = function () {
+    document.getElementById("quangcao").style.display = "none";
+}
