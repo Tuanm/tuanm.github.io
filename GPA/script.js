@@ -36,6 +36,7 @@ tinhDiem.onclick = function() {
 
     if (tenHocPhan == "" || soTinChi == "" || diemQT == "" || diemKT == "") {
         document.getElementById("ketqua").style.display = "none";
+        document.getElementById("xeploai").style.display = "none";
         return;
     }
 
