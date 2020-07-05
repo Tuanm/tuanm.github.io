@@ -1,4 +1,4 @@
-console.log("Đã có cái mẹ gì đâu -_-");
+console.log("Nhìn cái gì!!! -_-");
 
 let danhSach = [];
 let tongTinChi = 0;
@@ -16,14 +16,24 @@ function inDanhSach() {
     for (var stt = 0; stt < danhSach.length; stt++) {
         table += "<tr><td>" + danhSach[stt].ten + "</td><td>" + danhSach[stt].tinChi + "</td><td>" +
                               danhSach[stt].trongSo + "</td><td>" + danhSach[stt].diemQT + "</td><td>" + 
-                              danhSach[stt].diemKT + "</td><td>" + danhSach[stt].diemTong + "</td><td>" + 
-                              danhSach[stt].xepLoai +
-                 "</td></tr>"
+                              danhSach[stt].diemKT + "</td><td>" + danhSach[stt].diemTong;
+        switch (danhSach[stt].xepLoai) {
+            case "A+":
+            case "A":
+                table += "</td><td style='color: green'>";
+                break;
+            case "F":
+                table += "</td><td style='color: red'>";
+                break;
+            default:
+                table += "</td><td>";
+        }
+        table += danhSach[stt].xepLoai + "</td></tr>";
     }
     table += "</table>";
-
     document.getElementById("table").innerHTML = table;
-    document.getElementById("gpa").innerHTML = "<b>" + "GPA: " + GPA + "</b>";
+    document.getElementById("gpa").innerHTML = "<b>GPA:</b> " + 
+                                               ((GPA >= 3.2) ? "<b style='color: green'>" : (GPA < 2) ? "<b style='color: red'>" : "<b>") + GPA + "</b>";
 }
 
 function themDanhSach() {
@@ -40,21 +50,26 @@ function themDanhSach() {
 
     hocPhan.ten = document.getElementById("hocphan").value;
     hocPhan.tinChi = document.getElementById("tinchi").value;
+    if (!(hocPhan.tinChi >= 0)) hocPhan.tinChi = 0;
     hocPhan.trongSo = getTrongSo();
     hocPhan.diemQT = document.getElementById("quatrinh").value;
+    if (!(hocPhan.diemQT >= 0 && hocPhan.diemQT <= 10)) hocPhan.diemQT = 0;
     hocPhan.diemKT = document.getElementById("ketthuc").value;
+    if (!(hocPhan.diemKT >= 0 && hocPhan.diemKT <= 10)) hocPhan.diemKT = 0;
     hocPhan.diemTong = Math.round((hocPhan.diemQT * hocPhan.trongSo + 
                                    hocPhan.diemKT * (1 - hocPhan.trongSo)) * 10) / 10;
     hocPhan.xepLoai = (hocPhan.diemQT < 3 || hocPhan.diemKT < 3) ? "F" : getXepLoai(hocPhan.diemTong);
     hocPhan.diemQuyDoi = getDiemQuyDoi(hocPhan.xepLoai);
     
+    var daThem = false;
     for (var stt = 0; stt < danhSach.length; stt++) {
         if (danhSach[stt].ten === hocPhan.ten) {
             danhSach.splice(stt, 1);
+            daThem = true;
         }
     }
     danhSach.push(hocPhan);
-    tongTinChi += parseInt(hocPhan.tinChi);
+    if (!daThem) tongTinChi += parseInt(hocPhan.tinChi);
 
     var tong = 0;
     for (var stt = 0; stt < danhSach.length; stt++) {
@@ -109,12 +124,15 @@ tinhDiem.onclick = function() {
 
     var tenHocPhan = document.getElementById("hocphan").value;
     var soTinChi = document.getElementById("tinchi").value;
+    if (!(soTinChi >= 0)) soTinChi = 0;
     var trongSo = getTrongSo();
     var diemQT = document.getElementById("quatrinh").value;
+    if (!(diemQT >= 0 && diemQT <= 10)) diemQT = 0;
     var diemKT = document.getElementById("ketthuc").value;
+    if (!(diemKT >= 0 && diemKT <= 10)) diemKT = 0;
 
     if (tenHocPhan == "" || soTinChi == "" || diemQT == "" || diemKT == "") {
-        alert("Bình tĩnh bạn ơi!!!");
+        console.log("Nhập sai rồi!!! -_-");
         document.getElementById("ketqua").style.display = "none";
         document.getElementById("xeploai").style.display = "none";
         return;
@@ -123,7 +141,7 @@ tinhDiem.onclick = function() {
     var ketQua = Math.round((diemQT * trongSo + diemKT * (1 - trongSo)) * 10) / 10;
     var xepLoai = getXepLoai(ketQua);
 
-    document.getElementById("ketqua").innerHTML = "</br>" + "Điểm tổng kết" + "</br><b>" + ketQua + "</b></br>";
+    document.getElementById("ketqua").innerHTML = "</br>" + "Điểm tổng kết" + "</br><b>" + ketQua + "</b><b style='color: gray'> / 10</b></br>";
     document.getElementById("ketqua").style.display = "inline";
     document.getElementById("xeploai").innerHTML = "</br>" + "Xếp loại" + "</br><b>" + xepLoai + "</b></br>";
     document.getElementById("xeploai").style.display = "inline";
