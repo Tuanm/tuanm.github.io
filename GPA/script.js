@@ -23,7 +23,7 @@ function inDanhSach() {
     table += "</table>";
 
     document.getElementById("table").innerHTML = table;
-    document.getElementById("gpa").innerHTML = "GPA: " + GPA;
+    document.getElementById("gpa").innerHTML = "<b>" + "GPA: " + GPA + "</b>";
 }
 
 function themDanhSach() {
@@ -123,9 +123,9 @@ tinhDiem.onclick = function() {
     var ketQua = Math.round((diemQT * trongSo + diemKT * (1 - trongSo)) * 10) / 10;
     var xepLoai = getXepLoai(ketQua);
 
-    document.getElementById("ketqua").innerHTML = "</br>" + "Điểm tổng kết" + "</br>" + ketQua + "</br>";
+    document.getElementById("ketqua").innerHTML = "</br>" + "Điểm tổng kết" + "</br><b>" + ketQua + "</b></br>";
     document.getElementById("ketqua").style.display = "inline";
-    document.getElementById("xeploai").innerHTML = "</br>" + "Xếp loại" + "</br>" + xepLoai + "</br>";
+    document.getElementById("xeploai").innerHTML = "</br>" + "Xếp loại" + "</br><b>" + xepLoai + "</b></br>";
     document.getElementById("xeploai").style.display = "inline";
 
     themDanhSach();
