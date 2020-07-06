@@ -1,11 +1,10 @@
 * {
-  font-family: Consolas, "Comic Sans MS", "Open Sans", Calibri, serif, "Courier New";
+  font-family: Consolas, "Comic Sans MS", "Open Sans", Calibri, sans-serif;
   box-sizing: border-box;
 }
 
 body {
   font-size: 125%;
-  font-family: Consolas, "Comic Sans MS", "Open Sans", Calibri, serif, "Courier New";
   background-color: #fcb3f0;
 }
 
