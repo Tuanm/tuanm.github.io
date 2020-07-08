@@ -19,9 +19,14 @@
         <meta property="og:url">
 
         <script type="text/javascript" src="dat.gui.min.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" async>
             console.log('%c# Open Inspector for more information', 'font-family: Consolas; font-size: 16px; color: #66ff99;');
             location.hash = '🙃';
+            
+            let cover = document.getElementById("cover");
+            cover.onclick = function() {
+                cover.style.display = none;
+            };
         </script>
         <style>
             * {
@@ -77,6 +82,7 @@
         </style>
     </head>
     <body>
+        <div style="background-image: url('./img/dimple.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover" id="cover"></div>
         <canvas></canvas>
         <!-- <script src="./script.js"></script> -->
         <script type="text/javascript">
