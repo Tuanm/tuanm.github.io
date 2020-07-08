@@ -1,17 +1,77 @@
 <html>
 <head>
-  <title>:v</title>
+  <title>Tài liệu học tập sưu tầm</title>
   <style>
     * {
-      background-image: url('./dimple.jpg');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
+      font-family: Consolas, "Comic Sans MS", "Open Sans", Calibri, sans-serif;
+      box-sizing: border-box;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
     }
+
+    body {
+      font-size: 125%;
+      background-color: #fcb3f0;
+    }
+
+    input[type=text], select, textarea {
+      font-size: 150%;
+      width: 25%;
+      padding: 18px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      display: block;
+      margin-top: 25px;
+    }
+
+    input[type=submit] {
+      font-size: 150%;
+      background-color: #fa5ae0;
+      color: white;
+      padding: 18px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin-top: 25px;
+    }
+
+    input[type=submit]:hover {
+      background-color: #ff00d5;
+    }
+
   </style>
 </head>
-<body>
+<body id="cover">
   <header></header>
-  <main></main>
+  <main>
+      <div id="input">
+        <center>
+          <input type="text" id="question" placeholder="1 + 1 = ?">
+          <input type="submit" id="submit" value="Answer">
+        </center>
+      </div>
+  </main>
   <footer></footer>
+  <!-- scripts here -->
+  <script type="text/javascript">
+    let question = document.getElementById("question");
+    let submit = document.getElementById("submit");
+
+    submit.onclick = function() {
+        if (question.value != "2") return;
+
+        let input = document.getElementById("input");
+        input.style.display = "none";
+        let cover = document.getElementById("cover");
+        cover.style.backgroundImage = "url('./dimple.jpg')";
+        cover.style.backgroundRepeat = "no-repeat";
+        cover.style.backgroundAttachment = "fixed";
+        cover.style.backgroundSize = "cover";
+        window.document.title = ":v";     
+    };
+    
+  </script>
 </body>
