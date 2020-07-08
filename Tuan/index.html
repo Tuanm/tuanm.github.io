@@ -57,6 +57,8 @@
   <footer></br></br></br></br></br></br></br></br></br></footer>
   <!-- scripts here -->
   <script type="text/javascript">
+    let cover = document.getElementById("cover");
+    let input = document.getElementById("input");
     let question = document.getElementById("question");
     let submit = document.getElementById("submit");
 
@@ -72,9 +74,7 @@
                 return;
         }
 
-        let input = document.getElementById("input");
         input.style.display = "none";
-        let cover = document.getElementById("cover");
         cover.style.backgroundImage = "url('./dimple.jpg')";
         cover.style.backgroundRepeat = "no-repeat";
         cover.style.backgroundAttachment = "fixed";
@@ -82,5 +82,9 @@
         window.document.title = ":v";     
     };
     
+    cover.ondblclick = function() {
+        input.style.display = "inline";
+    };
+
   </script>
 </body>
