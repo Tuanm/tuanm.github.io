@@ -11,28 +11,42 @@
     }
 
     body {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
       font-size: 125%;
       background-color: #fcb3f0;
     }
 
+    main {
+      min-height: 360px;
+    }
+
+    footer {
+      margin-top: auto;
+    }
+
     input[type=text], select, textarea {
-      font-size: 300%;
-      width: 60%;
+      font-size: 350%;
+      text-align: center;
+      width: 70%;
       padding: 18px;
       border: 1px solid #ccc;
-      border-radius: 8px;
+      border-radius: 100px;
       resize: vertical;
       display: block;
       margin-top: 25px;
     }
 
     input[type=submit] {
-      font-size: 200%;
+      font-size: 300%;
+      text-align: center;
       background-color: #fa5ae0;
       color: white;
+      min-width: 25%;
       padding: 18px 20px;
       border: none;
-      border-radius: 8px;
+      border-radius: 60px;
       cursor: pointer;
       display: block;
       margin-top: 25px;
@@ -42,6 +56,15 @@
       background-color: #ff00d5;
     }
 
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    a:hover {
+      color: black;
+    }
+
   </style>
 </head>
 <body id="cover">
@@ -49,27 +72,29 @@
   <main>
       <div id="input">
         <center>
-          <input type="text" id="question" placeholder="Nhập mã vào đây">
-          <input type="submit" id="submit" value="Trả lời">
+          <input type="text" id="question" placeholder="nhập mã vào đây">
+          <input type="submit" id="submit" value="xác nhận">
         </center>
       </div>
   </main>
-  <footer></br></br></br></br></br></br></br></br></br></footer>
+  <footer></br></br><center><a href="https://m.me/Teemoing" title=":v">góp ý</a></center></br></br></footer>
   <!-- scripts here -->
   <script type="text/javascript">
     let cover = document.getElementById("cover");
     let input = document.getElementById("input");
-    let question = document.getElementById("question");
+    let answer = document.getElementById("question");
     let submit = document.getElementById("submit");
+
+    /* You can't see me :v */
     let list = [
         { key: "KTLT", link: "https://drive.google.com/drive/folders/1fQ2oJKbeL_1DIcOoM-7x71c-2SGAEG1S?usp=sharing" },
         { key: "LTXS", link: "https://drive.google.com/drive/folders/1YzvJTkdz4rymXSUZrKXAlAF5ZKj9gnFh?usp=sharing" }
     ];
-    
+
     submit.onclick = function() {
-        if (question.value === "") return;
+        if (answer.value.trim() === "") return;
         for (var index = 0; index < list.length; index++) {
-            if (question.value == list[index].key) {
+            if (answer.value.toLowerCase() == list[index].key.toLowerCase()) {
                 window.location.href = list[index].link;
                 return;
             }
@@ -82,6 +107,11 @@
         cover.style.backgroundSize = "cover";
         window.document.title = ":v";     
     };
+    input.addEventListener("keyup", function(e) {
+        if (e.keyCode === 13) { // Enter pressed
+            submit.click();
+        }
+    });
     
     cover.ondblclick = function() {
         input.style.display = "inline";
