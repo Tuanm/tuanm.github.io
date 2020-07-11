@@ -61,17 +61,17 @@
     let input = document.getElementById("input");
     let question = document.getElementById("question");
     let submit = document.getElementById("submit");
-
+    let list = [
+        { key: "KTLT", link: "https://drive.google.com/drive/folders/1fQ2oJKbeL_1DIcOoM-7x71c-2SGAEG1S?usp=sharing" },
+        { key: "LTXS", link: "https://drive.google.com/drive/folders/1YzvJTkdz4rymXSUZrKXAlAF5ZKj9gnFh?usp=sharing" }
+    ];
     submit.onclick = function() {
-        // link nè :))
-        switch (question.value) {
-            case "": return;
-            case "KTLT":
-                window.location.href = "https://drive.google.com/drive/folders/1fQ2oJKbeL_1DIcOoM-7x71c-2SGAEG1S?usp=sharing";
+        if (question.value === "") return;
+        for (var index = 0; index < list.length; index++) {
+            if (question.value == list[index].key) {
+                window.location.href = list[index].link;
                 return;
-            case "gái xinh":
-                alert("Em chưa cập nhật bác ơi!!! :v");
-                return;
+            }
         }
 
         input.style.display = "none";
