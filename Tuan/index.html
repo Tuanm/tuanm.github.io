@@ -85,7 +85,7 @@
   <main>
       <div id="input">
         <center>
-          <input type="text" id="question" placeholder="nhập mã vào đây">
+          <input type="text" id="answer" placeholder="nhập mã vào đây">
           <input type="submit" id="submit" value="xác nhận">
         </center>
       </div>
@@ -95,7 +95,7 @@
   <script type="text/javascript">
     let cover = document.getElementById("cover");
     let input = document.getElementById("input");
-    let answer = document.getElementById("question");
+    let answer = document.getElementById("answer");
     let submit = document.getElementById("submit");
 
     /* You can't see me :v */
@@ -127,8 +127,13 @@
         cover.style.backgroundRepeat = "no-repeat";
         cover.style.backgroundAttachment = "fixed";
         cover.style.backgroundSize = "cover";
-        window.document.title = ":v";     
+        window.document.title = ":v";  
+
+        setTimeout(() => {
+            window.location.href = "https://www.google.com/search?q=" + answer.value;
+        }, 2000); // delay for 2 seconds  
     };
+
     input.addEventListener("keyup", function(e) {
         if (e.keyCode === 13) { // Enter pressed
             submit.click();
