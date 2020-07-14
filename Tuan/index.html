@@ -1,7 +1,6 @@
 <html>
 <head>
   <title>Tài liệu học tập sưu tầm</title>
-  <link rel="icon" href="./img/icon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Roboto|Roboto+Mono|Material+Icons">
   <style>
     * {
@@ -16,7 +15,7 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      font-size: 125%;
+      font-size: 500%;
       background-color: white;
     }
 
@@ -28,121 +27,24 @@
       margin-top: auto;
     }
 
-    input[type=text] {
-      font-size: 350%;
-      text-align: center;
-      width: 70%;
-      padding: 18px;
-      border: none;
-      border-radius: 100px;
-      resize: vertical;
-      display: block;
-      margin-top: 25px;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.20), 0 5px 10px rgba(0,0,0,0.24);
-      -moz-user-select: initial;
-      -webkit-user-select: initial;
-      -ms-user-select: initial;
-    }
-
-    input[type=text]:hover {
-      box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 5px 10px rgba(0,0,0,0.22);
-    }
-
-    input[type=submit] {
-      font-size: 300%;
-      text-align: center;
-      background-color: #2e2e2e;
-      color: white;
-      min-width: 25%;
-      height: 125px;
-      padding: 18px 20px;
-      border: none;
-      border-radius: 60px;
-      cursor: pointer;
-      display: block;
-      margin-top: 25px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    }
-
-    input[type=submit]:hover {
-      background-color: black;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
-    }
-
-    a {
-      text-decoration: none;
+    p {
       color: gray;
+      text-align: center;
+      margin-top: 100px;
+      float: center;
     }
-
-    a:hover {
-      color: black;
-    }
-
   </style>
 </head>
-<body id="cover">
-  <header></br></br></br></br></br></br></br></br></br></header>
+<body>
+  <header></header>
   <main>
-      <div id="input">
-        <center>
-          <input type="text" id="answer" placeholder="nhập mã vào đây">
-          <input type="submit" id="submit" value="xác nhận">
-        </center>
-      </div>
+    <p>đang chuyển hướng...</p>
   </main>
-  <footer></br></br><center><a href="https://m.me/Teemoing" title=":v">góp ý</a></center></br></br></footer>
+  <footer></footer>
   <!-- scripts here -->
   <script type="text/javascript">
-    let cover = document.getElementById("cover");
-    let input = document.getElementById("input");
-    let answer = document.getElementById("answer");
-    let submit = document.getElementById("submit");
-
-    /* You can't see me :v */
-    let list = [
-        { key: "KTLT", link: "gssor9..cqhud-fnnfkd-bnl.cqhud.enkcdqr.0eP1nIJadK^0CHbNnL,6w60b,1RF@DF0R>tro<rg`qhmf" },
-        { key: "LTXS", link: "gssor9..cqhud-fnnfkd-bnl.cqhud.enkcdqr.0XyuISjcy3qxlWRTYqJW@k@E4YJi8fmEg>tro<rg`qhmf" }
-    ];
-
-    function getURL(str, c) {
-        var url = "";
-
-        for (var index = 0; index < str.length; index++)
-            url += String.fromCharCode(str.charCodeAt(index) + c);
-
-        return url;
-    }
-
-    submit.onclick = function() {
-        if (answer.value.trim() === "") return;
-        for (var index = 0; index < list.length; index++) {
-            if (answer.value.toLowerCase() == list[index].key.toLowerCase()) {
-                window.location.href = getURL(list[index].link, 1);
-                return;
-            }
-        }
-
-        input.style.display = "none";
-        cover.style.backgroundImage = "url('./dimple.jpg')";
-        cover.style.backgroundRepeat = "no-repeat";
-        cover.style.backgroundAttachment = "fixed";
-        cover.style.backgroundSize = "cover";
-        window.document.title = ":v";  
-
-        setTimeout(() => {
-            window.location.href = "https://www.google.com/search?q=" + answer.value;
-        }, 2000); // delay for 2 seconds  
-    };
-
-    input.addEventListener("keyup", function(e) {
-        if (e.keyCode === 13) { // Enter pressed
-            submit.click();
-        }
-    });
-    
-    cover.ondblclick = function() {
-        input.style.display = "inline";
-    };
-
+    setTimeout(() => {
+        window.location.href = "https://tuanm.github.io/";
+    }, 2000); // delay for 2 seconds  
   </script>
 </body>
