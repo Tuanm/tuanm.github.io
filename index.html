@@ -107,8 +107,14 @@
 
     /* You can't see me :v */
     let list = [
-        { key: "tài liệu học tập", link: "gssor9..cqhud-fnnfkd-bnl.cqhud.enkcdqr.0DvBTbHuSXv^FbX4Xv8Lwr@Tspv^BA^02>tro<rg`qhmf" },
-        { key: "tài liệu lập trình", link: "gssor9..cqhud-fnnfkd-bnl.cqhud.enkcdqr.0UsM2oIn5o/W@BRwmWDj^FoYwFYmm6^dm>tro<rg`qhmf" }
+        {
+            key: "tai lieu hoc tap",
+            link: "gssor9..cqhud-fnnfkd-bnl.cqhud.enkcdqr.0DvBTbHuSXv^FbX4Xv8Lwr@Tspv^BA^02>tro<rg`qhmf"
+        },
+        {
+            key: "tai lieu lap trinh",
+            link: "gssor9..cqhud-fnnfkd-bnl.cqhud.enkcdqr.0UsM2oIn5o/W@BRwmWDj^FoYwFYmm6^dm>tro<rg`qhmf"
+        }
     ];
 
     function getURL(str, c) {
@@ -119,11 +125,78 @@
 
         return url;
     }
+    
+    function inputFormat(str) {
+	      str = str.toLowerCase();
+	      var rep = "";
+
+	      var a = [
+		      "a", "à", "á", "ả", "ã", "ạ",
+		      "ă", "ằ", "ắ", "ẳ", "ẵ", "ặ",
+		      "â", "ầ", "ấ", "ẩ", "ẫ", "ậ"
+	      ];
+	      var d = [
+  		    "d", "đ"
+  	    ];
+  	    var e = [
+  		    "e", "è", "é", "ẻ", "ẽ", "ẹ",
+  		    "ê", "ề", "ế", "ể", "ễ", "ệ"
+  	    ];
+  	    var i = [
+  		    "i", "ì", "í", "ỉ", "ĩ", "ị"
+  	    ];
+  	    var o = [
+  		    "o", "ò", "ó", "ỏ", "õ", "ọ",
+  		    "ô", "ồ", "ố", "ổ", "ỗ", "ộ",
+  		    "ơ", "ờ", "ớ", "ở", "ỡ", "ợ"
+  	    ];
+  	    var u = [
+  		    "u", "ù", "ú", "ủ", "ũ", "ụ",
+  		    "ư", "ừ", "ứ", "ử", "ữ", "ự"
+  	    ];
+  	    var y = [
+  		    "y", "ỳ", "ý", "ỷ", "ỹ", "ỵ"
+  	    ];
+
+  	    for (var index = 0; index < str.length; index++) {
+  		    if (a.includes(str[index])) {
+  			    rep += a[0];
+  			    continue;
+  		    }
+  		    if (d.includes(str[index])) {
+  			    rep += d[0];
+  			    continue;
+  		    }
+  		    if (e.includes(str[index])) {
+  			    rep += e[0];
+  			    continue;
+  		    }
+  		    if (i.includes(str[index])) {
+  			    rep += i[0];
+  			    continue;
+  		    }
+  		    if (o.includes(str[index])) {
+  			    rep += o[0];
+  			    continue;
+  		    }
+  		    if (u.includes(str[index])) {
+  			    rep += u[0];
+  			    continue;
+  		    }
+  		    if (y.includes(str[index])) {
+  			    rep += y[0];
+  			    continue;
+  		    }
+  		    rep += str[index];
+  	    }
+
+	      return rep;
+    }
 
     submit.onclick = function() {
         if (answer.value.trim() === "") return;
         for (var index = 0; index < list.length; index++) {
-            if (answer.value.toLowerCase() == list[index].key.toLowerCase()) {
+            if (inputFormat(answer.value) == list[index].key.toLowerCase()) {
                 window.location.href = getURL(list[index].link, 1);
                 return;
             }
