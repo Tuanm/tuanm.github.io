@@ -6,3 +6,6 @@ từ thư mục `img`.
 * `extension`: phần mở rộng của ảnh (tất cả các ảnh đều giống nhau)
 ## Lưu ý
 Ảnh được lưu cần có định dạng: `id` + `extension`.
+
+# Tumblr API
+`GET` JSON ảnh từ tumblr gaixinhchonloc.com
