@@ -45,11 +45,11 @@
     function openFullscreen(element) {
       if (element.requestFullscreen) {
         element.requestFullscreen();
-      } else if (cover.mozRequestFullScreen) { /* Firefox */
+      } else if (element.mozRequestFullScreen) { /* Firefox */
         element.mozRequestFullScreen();
-      } else if (cover.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+      } else if (element.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
         element.webkitRequestFullscreen();
-      } else if (cover.msRequestFullscreen) { /* IE/Edge */
+      } else if (element.msRequestFullscreen) { /* IE/Edge */
         element.msRequestFullscreen();
       }
     }
