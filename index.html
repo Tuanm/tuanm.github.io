@@ -2,6 +2,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Roboto|Roboto+Mono|Material+Icons">
+  <title>To Live Is To Risk It All...</title>
   <style>
     * {
       user-select: none;
@@ -30,12 +31,16 @@
     p {
       margin: 0;
     }
+
+    a {
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <main>
     <p>
-      To live is to risk it all;<br>
+      To live is to <a id="risk">risk</a> it all;<br>
       otherwise you're just an inert chunk<br>
       of randomly assembled molecules<br>
       drifting wherever the universe blows you...<br>
@@ -54,6 +59,9 @@
       }
     }
 
-    openFullscreen(document.documentElement);
+    var risk = document.getElementById("risk");
+    risk.onclick = function() {
+      openFullscreen(document.documentElement);
+    }
   </script>
 </body>
