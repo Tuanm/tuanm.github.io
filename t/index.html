@@ -54,7 +54,7 @@
     <a>;</a>
   </footer>
   <script>
-    let t = [
+    var t = [
       {
         markAs: "Sun",
         detail: [],
@@ -132,14 +132,10 @@
     ];
 
     var d = new Date();
-
-    setTimeout(function() {
-      document.getElementById("today").style.marginTop = "2em";
-      document.getElementById("today").style.fontSize = "300%";
-      document.getElementById("today").innerHTML = "Today is " + t[d.getDay()]["markAs"] + "day.";
-    }, 1500);
-
     var hasAlerted = false;
+    var safeStyle = "style='color: green;'";
+    var notSafeStyle = "style='color: red;'";
+    var normalStyle = "style='color: red;'";
 
     function getNotif() {
       var hour = "" + d.getHours();
@@ -149,8 +145,9 @@
       var time = "" + hour + minute;
       var detail = t[d.getDay()]["detail"];
       var subjects = detail.length;
-      var notif = hour + ":" + minute + "<br>";
+      var notif = hour + ":" + minute;
       if (subjects == 0) {
+        notif = "<a " + safeStyle + ">" + notif + "</a><br>";
         notif += "Không có lớp học nào cho ngày hôm nay.<br>";
         if (!hasAlerted) {
           alert("Không có lớp học nào cho ngày hôm nay.");
@@ -158,19 +155,21 @@
         }
       }
       else {
+        notif = "<a " + normalStyle + ">" + notif + "</a><br>";
         for (var i = 0; i < subjects; i++) {
           var startTime = detail[i]["time"].substring(0, 4);
           var endTime = detail[i]["time"].substring(5);
           if (time < startTime) {
-            notif += "Sắp có lớp học " + detail[i]["subject"] +
-                     " tại phòng " + detail[i]["room"] +
-                     " bắt đầu lúc " + startTime.substring(0, 2) + ":" +
-                                       startTime.substring(2) + ".<br>";
+            var temp = detail[i]["subject"] +
+                       " tại phòng " + detail[i]["room"] +
+                       " bắt đầu lúc " + startTime.substring(0, 2) + ":" +
+                                         startTime.substring(2) + ".";
             if (startTime - time <= 30) {
-              alert("Sắp có lớp học " + detail[i]["subject"] +
-                    " tại phòng " + detail[i]["room"] +
-                    " bắt đầu lúc " + startTime.substring(0, 2) + ":" +
-                                      startTime.substring(2) + ".");
+              notif += "Sắp có lớp học " + temp + "<br>";
+              alert("Sắp có lớp học " + temp);
+            }
+            else {
+              notif += "Có lớp học " + temp + "<br>";
             }
           }
           else if (time >= startTime && time < endTime) {
@@ -187,10 +186,28 @@
       return notif;
     }
 
-    setInterval(function() {
+    var justDoIt = function() {
       var notif = document.getElementById("notif").innerHTML;
-      if (notif.length > 1000) notif = "<br>";
+      if (notif.length > 120) {
+        document.getElementById("today").style.color = "gray";
+        document.getElementById("today").innerHTML = "Today is " + t[d.getDay()]["markAs"] + "day.";
+      }
+      else if (notif.length > 1000) {
+        notif = "<br>";
+        hasAlerted = false;
+        document.getElementById("today").style.color = "white";
+      }
       document.getElementById("notif").innerHTML = notif + getNotif();
-    }, 60000);
+    };
+
+    setTimeout(function() {
+      document.getElementById("today").style.marginTop = "2em";
+      document.getElementById("today").style.fontSize = "300%";
+      document.getElementById("today").innerHTML = "Today is " + t[d.getDay()]["markAs"] + "day.";
+      setTimeout(justDoIt, 1000);
+    }, 1500);
+
+
+    setInterval(justDoIt, 60000);
   </script>
 </body>
