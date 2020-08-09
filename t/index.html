@@ -1,0 +1,196 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Roboto|Roboto+Mono|Material+Icons">
+  <title>Tuan's timetable</title>
+  <style>
+    * {
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
+    body {
+      background: black;
+      font-family: Consolas, "Google Sans", "Roboto", "Roboto Mono", "Material Icons", "Open Sans", sans-serif, serif;
+      color: white;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    main {
+      font-size: 180%;
+      height: 10em;
+      align-items: center;
+      justify-content: center;
+      display: flex;    
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p>
+      <div id="today" style="margin-top: 3em; font-size: 560%">Hi, Tuấn!</div>
+    </p>
+  </header>
+  <main>
+    <p>
+      <div id="notif"></div>
+    </p>
+  </main>
+  <footer>
+    <a>;</a>
+  </footer>
+  <script>
+    let t = [
+      {
+        markAs: "Sun",
+        detail: [],
+      },
+      { 
+        markAs: "Mon",
+        detail: [
+          {
+            time: "1230-1550",
+            room: "D6-405",
+            subject: "Computer Architectures",
+            id: "118185",
+          },
+          {
+            time: "1600-1730",
+            room: "D6-405",
+            subject: "Object-Oriented Programming",
+            id: "118181",
+          },
+        ],
+      },
+      {
+        markAs: "Tue",
+        detail: [],
+      },
+      {
+        markAs: "Wed",
+        detail: [
+          {
+            time: "1230-1455",
+            room: "D6-403",
+            subject: "Mathematical Statistics",
+            id: "118183",
+          },
+          {
+            time: "1600-1730",
+            room: "D6-403",
+            subject: "Operating Systems",
+            id: "118182",
+          },
+        ],
+      },
+      {
+        markAs: "Thu",
+        detail: [
+          {
+            time: "1230-1400",
+            room: "D6-405",
+            subject: "Object-Oriented Programming",
+            id: "118181",
+          },
+          {
+            time: "1600-1730",
+            room: "D6-405",
+            subject: "Data Structures and Algorithms",
+            id: "118184",
+          },
+        ],
+      },
+      {
+        markAs: "Fri",
+        detail: [
+          {
+            time: "1230-1550",
+            room: "D6-403",
+            subject: "Computation Programming",
+            id: "118186",
+          },
+        ],
+      },
+      {
+        markAs: "Sat",
+        detail: [],
+      },
+    ];
+
+    var d = new Date();
+
+    setTimeout(function() {
+      document.getElementById("today").style.marginTop = "2em";
+      document.getElementById("today").style.fontSize = "300%";
+      document.getElementById("today").innerHTML = "Today is " + t[d.getDay()]["markAs"] + "day.";
+    }, 1500);
+
+    var hasAlerted = false;
+
+    function getNotif() {
+      var hour = "" + d.getHours();
+      var minute = "" + d.getMinutes();
+      hour = hour.length == 2 ? hour : "0" + hour;
+      minute = minute.length == 2 ? minute : "0" + minute;
+      var time = "" + hour + minute;
+      var detail = t[d.getDay()]["detail"];
+      var subjects = detail.length;
+      var notif = hour + ":" + minute + "<br>";
+      if (subjects == 0) {
+        notif += "Không có lớp học nào cho ngày hôm nay.<br>";
+        if (!hasAlerted) {
+          alert("Không có lớp học nào cho ngày hôm nay.");
+          hasAlerted = true;
+        }
+      }
+      else {
+        for (var i = 0; i < subjects; i++) {
+          var startTime = detail[i]["time"].substring(0, 4);
+          var endTime = detail[i]["time"].substring(5);
+          if (time < startTime) {
+            notif += "Sắp có lớp học " + detail[i]["subject"] +
+                     " tại phòng " + detail[i]["room"] +
+                     " bắt đầu lúc " + startTime.substring(0, 2) + ":" +
+                                       startTime.substring(2) + ".<br>";
+            if (startTime - time <= 30) {
+              alert("Sắp có lớp học " + detail[i]["subject"] +
+                    " tại phòng " + detail[i]["room"] +
+                    " bắt đầu lúc " + startTime.substring(0, 2) + ":" +
+                                      startTime.substring(2) + ".");
+            }
+          }
+          else if (time >= startTime && time < endTime) {
+            notif += "Đang trong thời gian học lớp " + detail[i]["subject"] +
+                     " tại phòng " + detail[i]["room"] +
+                     " kết thúc lúc " + endTime.substring(0, 2) + ":" +
+                                        endTime.substring(2) + ".<br>";
+          }
+          else if (i == subjects - 1 && time >= endTime) {
+            notif += "Không còn lớp học nào cho ngày hôm nay.<br>";
+          }
+        }
+      }
+      return notif;
+    }
+
+    setInterval(function() {
+      var notif = document.getElementById("notif").innerHTML;
+      if (notif.length > 120) notif = "<br>";
+      document.getElementById("notif").innerHTML = notif + getNotif();
+    }, 3000);
+  </script>
+</body>
