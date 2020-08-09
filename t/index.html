@@ -189,8 +189,8 @@
 
     setInterval(function() {
       var notif = document.getElementById("notif").innerHTML;
-      if (notif.length > 120) notif = "<br>";
+      if (notif.length > 1000) notif = "<br>";
       document.getElementById("notif").innerHTML = notif + getNotif();
-    }, 3000);
+    }, 60000);
   </script>
 </body>
