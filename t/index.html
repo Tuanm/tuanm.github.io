@@ -190,11 +190,9 @@
       var notif = document.getElementById("notif").innerHTML;
       if (notif.length > 120) {
         document.getElementById("today").style.color = "gray";
-        document.getElementById("today").innerHTML = "Today is " + t[d.getDay()]["markAs"] + "day.";
       }
       else if (notif.length > 1000) {
         notif = "<br>";
-        hasAlerted = false;
         document.getElementById("today").style.color = "white";
       }
       document.getElementById("notif").innerHTML = notif + getNotif();
@@ -207,6 +205,11 @@
       setTimeout(justDoIt, 1000);
     }, 1500);
 
+    setInterval(function() {
+      d = new Date();
+      hasAlerted = false;
+      document.getElementById("today").innerHTML = "Today is " + t[d.getDay()]["markAs"] + "day.";
+    }, 900000);
 
     setInterval(justDoIt, 60000);
   </script>
