@@ -141,6 +141,7 @@
     var safeStyle = "style=\"color: green;\"";
     var notSafeStyle = "style=\"color: red;\"";
     var normalStyle = "style=\"color: yellow;\"";
+    var notReadStyle = "style=\"color: white;\"";
     var readStyle = "style=\"color: gray;\"";
     var timeToUpdate = 60000;
 
@@ -154,9 +155,10 @@
       var subjects = detail.length;
       var notif = hour + ":" + minute;
       var aTag = "<a " + normalStyle + ">";
+      var notReadATag = "<a " + notReadStyle + ">";
       if (subjects == 0) {
         notif = aTag.replace(normalStyle, safeStyle) + notif + "</a><br>";
-        notif += "Không có lớp học nào cho ngày hôm nay.<br>";
+        notif += notReadATag + "Không có lớp học nào cho ngày hôm nay." + "</a><br>";
         if (!hasAlerted) {
           alert("Không có lớp học nào cho ngày hôm nay.");
           hasAlerted = true;
@@ -173,22 +175,22 @@
                            " bắt đầu lúc " + startTime.substring(0, 2) + ":" +
                                              startTime.substring(2) + ".";
             if (startTime - time <= 30) {
-              notif += "Sắp có lớp học " + tempTime + "<br>";
+              notif += notReadATag + "Sắp có lớp học " + tempTime + "</a><br>";
               notif = notif.replace(aTag, aTag.replace(normalStyle, notSafeStyle));
               alert("Sắp có lớp học " + tempTime);
             }
             else {
-              notif += "Có lớp học " + tempTime + "<br>";
+              notif += notReadATag + "Có lớp học " + tempTime + "</a><br>";
             }
           }
           else if (time >= startTime && time < endTime) {
-            notif += "Đang trong thời gian học lớp " + detail[i]["subject"] +
-                     " tại phòng " + detail[i]["room"] +
-                     " kết thúc lúc " + endTime.substring(0, 2) + ":" +
-                                        endTime.substring(2) + ".<br>";
+            notif += notReadATag + "Đang trong thời gian học lớp " + detail[i]["subject"] +
+                                   " tại phòng " + detail[i]["room"] +
+                                   " kết thúc lúc " + endTime.substring(0, 2) + ":" +
+                                                      endTime.substring(2) + "." + "</a><br>";
           }
           else if (i == subjects - 1 && time >= endTime) {
-            notif += "Không còn lớp học nào cho ngày hôm nay.<br>";
+            notif += notReadATag + "Không còn lớp học nào cho ngày hôm nay." + "</a><br>";
             notif = notif.replace(aTag, aTag.replace(normalStyle, safeStyle));
           }
         }
@@ -205,9 +207,10 @@
         document.getElementById("today").style.display = "none";
       }
       var readATag = "<a " + readStyle + ">"; 
-      document.getElementById("notif").innerHTML = notif.replace(normalStyle, readStyle)
-                                                        .replace(notSafeStyle, readStyle)
-                                                        .replace(safeStyle, readStyle) + getNotif();
+      document.getElementById("notif").innerHTML = notif.replaceAll(normalStyle, readStyle)
+                                                        .replaceAll(notSafeStyle, readStyle)
+                                                        .replaceAll(safeStyle, readStyle)
+                                                        .replaceAll(notReadStyle, readStyle) + getNotif();
       window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     };
 
