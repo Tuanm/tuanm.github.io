@@ -200,13 +200,9 @@
       d = new Date();
       document.getElementById("today").innerHTML = t[d.getDay()]["markAs"] + "day";
       var notif = "" + document.getElementById("notif").innerHTML;
-      if (notif.length > 1000) {
+      if (notif.length > 120) {
         hasAlerted = false;
-        document.getElementById("today").style.color = "white";
-        notif = "<a style='color: gray'>...</a><br>";
-      }
-      else if (notif.length > 200) {
-        document.getElementById("today").style.color = "gray";
+        document.getElementById("today").style.display = "none";
       }
       var readATag = "<a " + readStyle + ">"; 
       document.getElementById("notif").innerHTML = notif.replace(normalStyle, readStyle)
