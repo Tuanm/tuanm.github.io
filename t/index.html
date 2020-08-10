@@ -162,8 +162,8 @@
       var aTag = "<a " + normalStyle + ">";
       var notReadATag = "<a " + notReadStyle + ">";
       if (subjects == 0) {
-        notif = aTag.replace(normalStyle, safeStyle) + notif + "</a><br>";
-        notif += notReadATag + "Không có lớp học nào cho ngày hôm nay." + "</a><br>";
+        notif = aTag.replace(normalStyle, safeStyle) + notif + "<br></a>";
+        notif += notReadATag + "Không có lớp học nào cho ngày hôm nay." + "<br></a>";
         if (!hasAlerted) {
           alert("Không có lớp học nào cho ngày hôm nay.");
           hasAlerted = true;
@@ -179,23 +179,25 @@
                            " tại phòng " + detail[i]["room"] +
                            " bắt đầu lúc " + startTime.substring(0, 2) + ":" +
                                              startTime.substring(2) + ".";
-            if (startTime - time <= 30) {
-              notif += notReadATag + "Sắp có lớp học " + tempTime + "</a><br>";
+            var startHour = startTime.substring(0, 2);
+            var startMinute = startTime.substring(2);
+            if (startHour - hour <= 1 && Math.abs(startMinute - minute) <= 30) {
+              notif += notReadATag + "Sắp có lớp học " + tempTime + "<br></a>";
               notif = notif.replace(aTag, aTag.replace(normalStyle, notSafeStyle));
-              alert("Sắp có lớp học " + tempTime);
+              // alert("Sắp có lớp học " + tempTime);
             }
             else {
-              notif += notReadATag + "Có lớp học " + tempTime + "</a><br>";
+              notif += notReadATag + "Có lớp học " + tempTime + "<br></a>";
             }
           }
           else if (time >= startTime && time < endTime) {
             notif += notReadATag + "Đang trong thời gian học lớp " + detail[i]["subject"] +
                                    " tại phòng " + detail[i]["room"] +
                                    " kết thúc lúc " + endTime.substring(0, 2) + ":" +
-                                                      endTime.substring(2) + "." + "</a><br>";
+                                                      endTime.substring(2) + "." + "<br></a>";
           }
           else if (i == subjects - 1 && time >= endTime) {
-            notif += notReadATag + "Không còn lớp học nào cho ngày hôm nay." + "</a><br>";
+            notif += notReadATag + "Không còn lớp học nào cho ngày hôm nay." + "<br></a>";
             notif = notif.replace(aTag, aTag.replace(normalStyle, safeStyle));
           }
         }
@@ -231,10 +233,10 @@
                                                        replaceAll(
                                                          replaceAll(notif, normalStyle, readStyle),
                                                          notSafeStyle,
-                                                         readStyle
+                                                         readStyle + hidable
                                                        ),
                                                        safeStyle,
-                                                       readStyle
+                                                       readStyle + hidable
                                                      ),
                                                      notReadStyle,
                                                      readStyle + hidable
