@@ -141,6 +141,7 @@
     var safeStyle = "style='color: green;'";
     var notSafeStyle = "style='color: red;'";
     var normalStyle = "style='color: yellow;'";
+    var timeToUpdate = 60000;
 
     function getNotif() {
       var hour = "" + d.getHours();
@@ -218,6 +219,6 @@
       location.reload();
     }, 900000);
 
-    setInterval(justDoIt, 60000);
+    setInterval(justDoIt, timeToUpdate);
   </script>
 </body>
