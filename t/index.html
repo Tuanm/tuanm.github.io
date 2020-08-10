@@ -148,7 +148,7 @@
     var normalStyle = "style=\"color: yellow;\"";
     var notReadStyle = "style=\"color: white;\"";
     var readStyle = "style=\"color: gray;\"";
-    var timeToUpdate = 60000;
+    var timeToUpdate = 6000; //
 
     function getNotif() {
       var hour = "" + d.getHours();
@@ -210,8 +210,8 @@
       return str;
     }
 
-    function clickToHide() {
-      document.getElementById("can-hide").style.display = "none";
+    function clickToHide(element) {
+      element.style.display = "none";
     }
 
     var justDoIt = function() {
@@ -223,8 +223,9 @@
         document.getElementById("today").style.display = "none";
       }
       var readATag = "<a " + readStyle + ">";
-      var canHideTag = "<div id=\"can-hide\" onclick=\"clickToHide()\">";
-      document.getElementById("notif").innerHTML = canHideTag +
+      var hidable = "onclick=\"clickToHide(this)\""; // :))
+      var hidableTag = "<div ondblclick=\"clickToHide(this)\">";
+      document.getElementById("notif").innerHTML = hidableTag +
                                                    replaceAll(
                                                      replaceAll(
                                                        replaceAll(
@@ -236,9 +237,9 @@
                                                        readStyle
                                                      ),
                                                      notReadStyle,
-                                                     readStyle
+                                                     readStyle + hidable
                                                    ) +
-                                                   "</div>" + getNotif();
+                                                   "</div>"+ getNotif();
       window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     };
 
