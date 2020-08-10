@@ -198,6 +198,13 @@
       return notif;
     }
 
+    function replaceAll(str, subStr, repStr) {
+      while (str.includes(subStr)) {
+        str = str.replace(subStr, repStr);
+      }
+      return str;
+    }
+
     var justDoIt = function() {
       d = new Date();
       document.getElementById("today").innerHTML = t[d.getDay()]["markAs"] + "day";
@@ -207,10 +214,19 @@
         document.getElementById("today").style.display = "none";
       }
       var readATag = "<a " + readStyle + ">"; 
-      document.getElementById("notif").innerHTML = notif.replaceAll(normalStyle, readStyle)
-                                                        .replaceAll(notSafeStyle, readStyle)
-                                                        .replaceAll(safeStyle, readStyle)
-                                                        .replaceAll(notReadStyle, readStyle) + getNotif();
+      document.getElementById("notif").innerHTML = replaceAll(
+                                                     replaceAll(
+                                                       replaceAll(
+                                                         replaceAll(notif, normalStyle, readStyle),
+                                                         notSafeStyle,
+                                                         readStyle
+                                                       ),
+                                                       safeStyle,
+                                                       readStyle
+                                                     ),
+                                                     notReadStyle,
+                                                     readStyle
+                                                   ) + getNotif();
       window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     };
 
