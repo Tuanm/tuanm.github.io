@@ -170,7 +170,7 @@
         }
       }
       else {
-        notif = aTag + notif + "</a><br>";
+        notif = aTag + notif + "<br></a>";
         for (var i = 0; i < subjects; i++) {
           var startTime = detail[i]["time"].substring(0, 4);
           var endTime = detail[i]["time"].substring(5);
@@ -231,7 +231,7 @@
                                                    replaceAll(
                                                      replaceAll(
                                                        replaceAll(
-                                                         replaceAll(notif, normalStyle, readStyle),
+                                                         replaceAll(notif, normalStyle, readStyle + hidable),
                                                          notSafeStyle,
                                                          readStyle + hidable
                                                        ),
