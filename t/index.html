@@ -21,6 +21,10 @@
       text-align: center;
     }
 
+    header:hover {
+      color: gray;
+    }
+
     main {
       font-size: 180%;
       height: 10em;
@@ -30,6 +34,8 @@
     }
 
     footer {
+      display: inline;
+      text-align: center;
       margin-top: 5em;
     }
 
@@ -52,7 +58,6 @@
   <main>
     <p>
       <div id="notif"></div>
-      <div style="margin-top: 5em; color: black">...</div>
     </p>
   </main>
   <footer>
@@ -205,6 +210,10 @@
       return str;
     }
 
+    function clickToHide() {
+      document.getElementById("can-hide").style.display = "none";
+    }
+
     var justDoIt = function() {
       d = new Date();
       document.getElementById("today").innerHTML = t[d.getDay()]["markAs"] + "day";
@@ -213,8 +222,10 @@
         hasAlerted = false;
         document.getElementById("today").style.display = "none";
       }
-      var readATag = "<a " + readStyle + ">"; 
-      document.getElementById("notif").innerHTML = replaceAll(
+      var readATag = "<a " + readStyle + ">";
+      var canHideTag = "<div id=\"can-hide\" onclick=\"clickToHide()\">";
+      document.getElementById("notif").innerHTML = canHideTag +
+                                                   replaceAll(
                                                      replaceAll(
                                                        replaceAll(
                                                          replaceAll(notif, normalStyle, readStyle),
@@ -226,7 +237,8 @@
                                                      ),
                                                      notReadStyle,
                                                      readStyle
-                                                   ) + getNotif();
+                                                   ) +
+                                                   "</div>" + getNotif();
       window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     };
 
