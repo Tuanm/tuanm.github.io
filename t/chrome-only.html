@@ -17,61 +17,62 @@
       color: white;
     }
 
-    .dialog {
-      margin-top:3em;
-      font-size: 160%;
-      align-items: center;
-      justify-content: center;
+    header {
+      text-align: center;
+    }
+
+    header:hover {
+      text-shadow: 3px 3px 10px gray;
+    }
+
+    dialog {
       text-align: left;
       background: white;
       color: black;
+      font-size: 150%;
       padding: 20px 20px;
       border: none;
       border-radius: 2px;
       box-shadow: 3px 3px 10px 1px white;
-      max-width: 500px;
-      display: none;
     }
 
     main {
-      margin: 0;
-    }
-
-    .today {
-      margin-top: 3em;
-      font-size: 560%;
-      align-items: center;
-      justify-content: center;
-      display: flex;  
-    }
-
-    .today:hover {
-      text-shadow: 3px 3px 10px gray;
-    }
-
-    .notif {
-      margin: 0;
       font-size: 180%;
       height: 10em;
       align-items: center;
       justify-content: center;
-      display: flex;
+      display: flex;    
+    }
+
+    footer {
+      display: inline;
+      text-align: center;
+      margin-top: 5em;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <header>
-    <center><div class="dialog" id="dialog" onclick="hideDialog()"></div></center>
+      <div id="today" style="margin-top: 3em; font-size: 560%;" onclick="showDialog()">Hi!</div>
   </header>
-  <main id="main">
-    <div class="today" id="today" onclick="showDialog()">Hi!</div>
-    <div class="notif" id="notif"></div>
+  <main>
+    <p>
+      <div id="notif"></div>
+    </p>
   </main>
+  <footer>
+    <dialog id="dialog" onclick="this.close()"></dialog>
+  </footer>
   <script>
-    console.log("This is my timetable, not yours.");
-    console.log("But you can create one,\nvisit https://github.com/Tuanm/tuanm.github.io/tree/master/t");
-    console.log("Hope you like it!");
-
     var t = [
       {
         markAs: "Sunday",
@@ -157,13 +158,7 @@
     var readStyle = "style=\"color: gray;\"";
 
     function showDialog() {
-      document.getElementById("main").style.display = "none";
-      document.getElementById("dialog").style.display = "block";
-    }
-
-    function hideDialog() {
-      document.getElementById("dialog").style.display = "none";
-      document.getElementById("main").style.display = "block";
+      document.getElementById("dialog").showModal();
     }
 
     var dialog = "";
@@ -178,12 +173,12 @@
       var detail = t[d.getDay()]["detail"];
       var subjects = detail.length;
       var notif = hour + ":" + minute;
-      var tag = "<div " + normalStyle + ">";
-      var notReadTag = "<div " + notReadStyle + ">";
+      var aTag = "<a " + normalStyle + ">";
+      var notReadATag = "<a " + notReadStyle + ">";
       if (subjects == 0) {
         dialog = "No class " + (day == "today" ? "" : "from today to ") + day + ".<br><br>";
-        notif = tag.replace(normalStyle, safeStyle) + notif + "<br></div>";
-        notif += notReadTag + "No class today." + "<br></div>";
+        notif = aTag.replace(normalStyle, safeStyle) + notif + "<br></a>";
+        notif += notReadATag + "No class today." + "<br></a>";
         if (!hasAlerted) {
           // alert("No class today.");
           // if (day == "today") showDialog();
@@ -196,7 +191,7 @@
 
       }
       else {
-        notif = tag + notif + "<br></div>";
+        notif = aTag + notif + "<br></a>";
         for (var i = 0; i < subjects; i++) {
           var startTime = detail[i]["time"].substring(0, 4);
           var endTime = detail[i]["time"].substring(5);
@@ -213,23 +208,23 @@
             var startHour = startTime.substring(0, 2);
             var startMinute = startTime.substring(2);
             if (startHour - hour <= 1 && Math.abs(startMinute - minute) <= 30) {
-              notif += notReadTag + "Quickly, class " + tempTime + "<br></div>";
-              notif = notif.replace(tag, tag.replace(normalStyle, notSafeStyle));
+              notif += notReadATag + "Quickly, class " + tempTime + "<br></a>";
+              notif = notif.replace(aTag, aTag.replace(normalStyle, notSafeStyle));
               // alert("Quickly, class " + tempTime);
             }
             else {
-              notif += notReadTag + "Class " + tempTime + "<br></div>";
+              notif += notReadATag + "Class " + tempTime + "<br></a>";
             }
           }
           else if (time >= startTime && time < endTime) {
-            notif += notReadTag + "In class " + detail[i]["subject"] +
+            notif += notReadATag + "In class " + detail[i]["subject"] +
                                    " in " + detail[i]["room"] +
                                    " ending at " + endTime.substring(0, 2) + ":" +
-                                                   endTime.substring(2) + "." + "<br></div>";
+                                                   endTime.substring(2) + "." + "<br></a>";
           }
           else if (i == subjects - 1 && time >= endTime) {
-            notif += notReadTag + "No more classes." + "<br></div>";
-            notif = notif.replace(tag, tag.replace(normalStyle, safeStyle));
+            notif += notReadATag + "No more classes." + "<br></a>";
+            notif = notif.replace(aTag, aTag.replace(normalStyle, safeStyle));
           }
         }
       }
@@ -258,7 +253,7 @@
       var readATag = "<a " + readStyle + ">";
       var hidable = "onclick=\"clickToHide(this)\"";
       var hidableTag = "<div ondblclick=\"clickToHide(this)\">";
-      document.getElementById("notif").innerHTML = "<div>" + hidableTag +
+      document.getElementById("notif").innerHTML = hidableTag +
                                                    replaceAll(
                                                      replaceAll(
                                                        replaceAll(
@@ -272,7 +267,7 @@
                                                      notReadStyle,
                                                      readStyle + hidable
                                                    ) +
-                                                   "</div>"+ getNotif(d) + "</div>";
+                                                   "</div>"+ getNotif(d);
       window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     };
 
