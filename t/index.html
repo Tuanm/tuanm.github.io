@@ -221,7 +221,6 @@
       document.getElementById("today").innerHTML = t[d.getDay()]["markAs"];
       var notif = "" + document.getElementById("notif").innerHTML;
       if (notif.length > 120) {
-        hasAlerted = false;
         document.getElementById("today").style.display = "none";
       }
       var readATag = "<a " + readStyle + ">";
