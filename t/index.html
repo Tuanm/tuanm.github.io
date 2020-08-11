@@ -150,21 +150,21 @@
       },
     ];
 
-    var d = new Date();
     var hasAlerted = false;
     var safeStyle = "style=\"color: green;\"";
     var notSafeStyle = "style=\"color: red;\"";
     var normalStyle = "style=\"color: yellow;\"";
     var notReadStyle = "style=\"color: white;\"";
     var readStyle = "style=\"color: gray;\"";
-    var timeToUpdate = 60000; // :))
 
     function showDialog() {
       document.getElementById("dialog").showModal();
     }
 
-    function getNotif() {
-      var dialog = "";
+    var dialog = "";
+
+    function getNotif(d, day = "today") {
+      if (day == "today") dialog = "";
       var hour = "" + d.getHours();
       var minute = "" + d.getMinutes();
       hour = hour.length == 2 ? hour : "0" + hour;
@@ -176,14 +176,19 @@
       var aTag = "<a " + normalStyle + ">";
       var notReadATag = "<a " + notReadStyle + ">";
       if (subjects == 0) {
-        dialog = "No class today";
+        dialog = "No class " + (day == "today" ? "" : "from today to ") + day + ".<br><br>";
         notif = aTag.replace(normalStyle, safeStyle) + notif + "<br></a>";
         notif += notReadATag + "No class today." + "<br></a>";
         if (!hasAlerted) {
           // alert("No class today.");
-          showDialog();
+          if (day == "today") showDialog();
           hasAlerted = true;
         }
+        var tomorrow = new Date(d);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dialog += "Coming on <b>" + t[tomorrow.getDay()]["markAs"] + "</b>:<br>";
+        getNotif(tomorrow, t[tomorrow.getDay()]["markAs"]);
+
       }
       else {
         notif = aTag + notif + "<br></a>";
@@ -239,7 +244,7 @@
     }
 
     var justDoIt = function() {
-      d = new Date();
+      var d = new Date();
       document.getElementById("today").innerHTML = t[d.getDay()]["markAs"];
       var notif = "" + document.getElementById("notif").innerHTML;
       if (notif.length > 120) {
@@ -262,20 +267,22 @@
                                                      notReadStyle,
                                                      readStyle + hidable
                                                    ) +
-                                                   "</div>"+ getNotif();
+                                                   "</div>"+ getNotif(d);
       window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
     };
 
     setTimeout(function() {
       document.getElementById("today").style.marginTop = "2em";
       document.getElementById("today").style.fontSize = "300%";
-      document.getElementById("today").innerHTML = t[d.getDay()]["markAs"];
+      document.getElementById("today").innerHTML = t[(new Date()).getDay()]["markAs"];
       setTimeout(justDoIt, 1000);
     }, 1500);
 
     setInterval(function() {
       location.reload();
     }, 900000);
+
+    var timeToUpdate = 60000; // :))
 
     setInterval(justDoIt, timeToUpdate);
   </script>
