@@ -168,7 +168,7 @@
       hour = hour.length == 2 ? hour : "0" + hour;
       minute = minute.length == 2 ? minute : "0" + minute;
       var time = "" + hour + minute;
-      var detail = t[3]["detail"];
+      var detail = t[d.getDay()]["detail"];
       var subjects = detail.length;
       var notif = hour + ":" + minute;
       var aTag = "<a " + normalStyle + ">";
