@@ -52,7 +52,7 @@
 <body>
   <header>
     <p>
-      <div id="today" style="margin-top: 3em; font-size: 560%">Hi, Tuấn!</div>
+      <div id="today" style="margin-top: 3em; font-size: 560%">Hi!</div>
     </p>
   </header>
   <main>
@@ -66,11 +66,11 @@
   <script>
     var t = [
       {
-        markAs: "Sun",
+        markAs: "Sunday",
         detail: [],
       },
       { 
-        markAs: "Mon",
+        markAs: "Monday",
         detail: [
           {
             time: "1230-1550",
@@ -87,11 +87,11 @@
         ],
       },
       {
-        markAs: "Tue",
+        markAs: "Tuesday",
         detail: [],
       },
       {
-        markAs: "Wed",
+        markAs: "Wednesday",
         detail: [
           {
             time: "1230-1455",
@@ -108,7 +108,7 @@
         ],
       },
       {
-        markAs: "Thu",
+        markAs: "Thursday",
         detail: [
           {
             time: "1230-1400",
@@ -125,7 +125,7 @@
         ],
       },
       {
-        markAs: "Fri",
+        markAs: "Friday",
         detail: [
           {
             time: "1230-1550",
@@ -136,7 +136,7 @@
         ],
       },
       {
-        markAs: "Sat",
+        markAs: "Saturday",
         detail: [],
       },
     ];
@@ -224,7 +224,7 @@
         document.getElementById("today").style.display = "none";
       }
       var readATag = "<a " + readStyle + ">";
-      var hidable = "onclick=\"clickToHide(this)\""; // :))
+      var hidable = "onclick=\"clickToHide(this)\"";
       var hidableTag = "<div ondblclick=\"clickToHide(this)\">";
       document.getElementById("notif").innerHTML = hidableTag +
                                                    replaceAll(
