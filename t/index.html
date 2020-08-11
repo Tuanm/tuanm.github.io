@@ -218,7 +218,7 @@
 
     var justDoIt = function() {
       d = new Date();
-      document.getElementById("today").innerHTML = t[d.getDay()]["markAs"] + "day";
+      document.getElementById("today").innerHTML = t[d.getDay()]["markAs"];
       var notif = "" + document.getElementById("notif").innerHTML;
       if (notif.length > 120) {
         hasAlerted = false;
@@ -248,7 +248,7 @@
     setTimeout(function() {
       document.getElementById("today").style.marginTop = "2em";
       document.getElementById("today").style.fontSize = "300%";
-      document.getElementById("today").innerHTML = t[d.getDay()]["markAs"] + "day";
+      document.getElementById("today").innerHTML = t[d.getDay()]["markAs"];
       setTimeout(justDoIt, 1000);
     }, 1500);
 
