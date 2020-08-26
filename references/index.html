@@ -1,0 +1,31 @@
+<body>
+  <script>
+
+    document.documentElement.style.fontFamily = "Consolas";
+
+    first = {
+        href: "https://drive.google.com/drive/folders/1EwCUcIvTYw_GcY5Yw9MxsAUtqw_CB_13?usp=sharing",
+        text: "Tai lieu hoc tap"
+    };
+
+    second = {
+        href: "https://drive.google.com/drive/folders/1VtN3pJo6p0XACSxnXEk_GpZxGZnn7_en?usp=sharing",
+        text: "Tai lieu lap trinh"
+    };
+
+    let index = 0;
+
+    function createTag(href, text) {
+        let div = document.createElement("a");
+        div.style.fontSize = "200%";
+        div.style.textDecoration = "none";
+        div.title = text.toLowerCase();
+        div.href = href;
+        div.innerHTML = ++index + " - " + text + "<br>";
+        document.body.appendChild(div);
+    }
+
+    createTag(first.href, first.text);
+    createTag(second.href, second.text);
+  </script>
+</body>
