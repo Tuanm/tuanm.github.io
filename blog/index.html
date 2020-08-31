@@ -1,0 +1,175 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Roboto|Roboto+Mono|Material+Icons">
+  <title>bờ-lốc</title>
+  <style>
+    * {
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
+    body {
+      background: black;
+      font-family: Consolas, "Google Sans", "Roboto", "Roboto Mono", "Material Icons", "Open Sans", sans-serif, serif;
+      color: white;
+      height: 100%;
+    }
+
+    main {
+      margin: 0;
+      min-height: 80%;
+    }
+
+    a {
+      font-size: 120%;
+      text-decoration: none;
+      color: gray;
+    }
+
+    a:hover {
+      text-decoration: line-through;
+    }
+
+    .dialog {
+      margin-top: 50px;
+      font-size: 160%;
+      text-justify: inter-word;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      background: white;
+      color: black;
+      padding: 20px 20px;
+      border: none;
+      border-radius: 2px;
+      box-shadow: 3px 3px 10px 1px white;
+      max-width: 40em;
+      display: none;
+    }
+
+    .blog {
+      margin-top: 3em;
+      margin-left: 20%;
+      font-size: 150%;
+      text-align: left;
+    }
+
+    .blog:hover {
+      color: gray;
+    }
+
+    .author {
+      text-align: right;
+      font-style: italic;
+    }
+
+    a.source {
+      font-size: 100%;
+      text-decoration: none;
+    }
+
+    .o_o {
+      margin-top: 1em;
+      font-size: 300%;
+      align-items: center;
+      justify-content: center;
+      display: flex;  
+    }
+
+    .o_o:hover {
+      text-shadow: 3px 3px 10px gray;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="..">biến về</a>
+    <a>|</a>
+    <a href="../GPA">tính điểm</a>
+    <a>|</a>
+    <a href=".">bờ-lốc</a>
+    <div id="o_o" class="o_o">o_o</div>
+  </header>
+  <main>
+<!-- Content below -->
+
+    <center id="200902">
+      <div id="title-200902" class="blog" onclick="show(200902)">
+        02/09/2020 - Đất nước có từ bao giờ?
+      </div>
+      <div id="content-200902" class="dialog" onclick="hide(200902)">
+        <b>#200902</b><br><br>
+        Hôm đấy đi chơi, chắc có một số thứ để viết.
+      </div>
+    </center>
+
+    </center>
+    <center id="200901">
+      <div id="title-200901" class="blog" onclick="show(200901)">
+        01/09/2020 - Ta đã đi tìm về thương nhớ
+      </div>
+      <div id="content-200901" class="dialog" onclick="hide(200901)">
+        <b>#200901</b><br><br>
+        Để mai xem có gì để viết không đã.
+      </div>
+    </center>
+
+    <center id="200831">
+      <div id="title-200831" class="blog" onclick="show(200831)">
+        31/08/2020 - Đẹp nao lòng mùa thu Hà Nội
+      </div>
+      <div id="content-200831" class="dialog" onclick="hide(200831)">
+<b>Đẹp nao lòng mùa thu Hà Nội</b><br><br>
+
+Hà Nội vào thu, khi những cơn gió heo may mơn man cây cỏ, chút nắng vàng rải rác khắp phố phường, hoa sữa nồng nàn, cây bàng lá đỏ, phố xưa nhà cổ, mái ngói thâm nâu đó cũng chính là thời điểm Hà Nội đẹp nhất.<br><br>
+
+Hà Nội thực sự được ưu ái, chỉ bởi vì mùa thu đến thật khác biệt. Không nóng như hè, không lạnh buốt như đông sang, cũng không ướt át như mùa xuân. Thu Hà Nội là một món quà thiên nhiên mà bạn có đi khắp nơi trên thế giới này cũng chẳng tài nào tìm thấy ở chốn khác. Nếu ai đến Hà Nội dù chỉ một lần vào tháng 10 để cảm nhận những cơn gió thu đầu tiên, ngắm những con đường đầy lá vàng sau một chiều lộng gió, bạn sẽ mãi mãi chẳng thể nào quên được.<br><br>
+
+Gọi là mùa thu, nhưng dường như thu không đến theo mùa, mà đến trong khoảnh khắc. Khoảnh khắc của mùa thu khiến bất cứ thứ gì lọt vào tầm mắt cũng trở nên quá đỗi dịu dàng, khiến cho lòng người như trầm lắng hơn, lãng mạn hơn, lặng mình thưởng thức nét đẹp tinh tế của mùa thu.<br><br>
+
+<a class="source" href="https://congthuong.vn/de-p-nao-lo-ng-mu-a-thu-ha-no-i-126689.html">Đọc tiếp</a>
+
+<div class="author">Thanh Huyền</div><br>
+
+      </div>
+
+<!-- Content above -->
+  </main>
+  <script>
+
+    console.log("Test o_o");
+
+    window.location.href = "#o_o";
+    
+    function show(element) {
+      element.style.display = "block";
+    }
+
+    function show(id) {
+      document.getElementById("content-" + id.toString()).style.display = "block";
+      document.getElementById("title-" + id.toString()).style.display = "none";
+    }
+
+    function hide(element) {
+      element.style.display = "none";
+    }
+
+    function hide(id) {
+      document.getElementById("content-" + id.toString()).style.display = "none";
+      document.getElementById("title-" + id.toString()).style.display = "block";
+    }
+
+    function replaceAll(str, subStr, repStr) {
+      while (str.includes(subStr)) {
+        str = str.replace(subStr, repStr);
+      }
+      return str;
+    }
+
+    // window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+
+  </script>
+</body>
