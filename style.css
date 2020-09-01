@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Google+Sans|Roboto|Roboto+Mono|Material+Icons);
+
+* {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+body {
+  background: black;
+  font-family: Consolas, "Google Sans", "Roboto", "Roboto Mono", "Material Icons", "Open Sans", sans-serif, serif;
+  color: white;
+  height: 100%;
+}
+
+main {
+  margin: 0;
+  min-height: 80%;
+}
+
+
+footer {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+footer:active {
+  color: gray;
+}
+
+a {
+  font-size: 120%;
+  text-decoration: none;
+  color: gray;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.o_o {
+  margin-top: 1em;
+  font-size: 300%;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.o_o:hover {
+  text-shadow: 3px 3px 10px gray;
+}
