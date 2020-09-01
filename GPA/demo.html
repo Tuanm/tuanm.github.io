@@ -1,0 +1,165 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="../style.css">
+  <title>GPA calculator</title>
+  <style>
+    .post {
+      text-align: center;
+    }
+
+    .blog-content {
+      margin-top: 50px;
+      max-width: 40em;
+      font-size: 160%;
+      text-align: justify;
+      background: white;
+      color: black;
+      padding: 20px 20px;
+      border: none;
+      border-radius: 2px;
+      box-shadow: 3px 3px 10px 1px white;
+      display: none;
+    }
+
+    .blog-title {
+      margin-top: 3em;
+      margin-left: 15%;
+      margin-right: 10%;
+      font-size: 150%;
+      text-align: left;
+    }
+
+    .blog-title:hover {
+      color: gray;
+    }
+
+    .blog-author {
+      text-align: right;
+      font-style: italic;
+    }
+
+    .blog-source {
+      font-size: 100%;
+      text-decoration: none;
+    }
+
+    .text-title {
+      margin-bottom: 10px;
+    }
+
+    .text-content {
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    a.submit {
+      color: black;
+    }
+
+    a.submit:hover {
+      text-decoration: underline;
+    }
+
+    a.cancel {
+      color: gray;
+    }
+
+    a.cancel:hover {
+      text-decoration: underline;
+    }
+
+    input {
+      font-size: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="..">nhà</a>
+    <a>|</a>
+    <a href="#">#</a>
+    <a>|</a>
+    <a href="../t">lịch học</a>
+    <a>|</a>
+    <a href="../blog">bờ-lốc</a>
+    <div id="o_o" class="o_o">o_o</div>
+  </header>
+  <main>
+    <div class="blog-title" id="title-1" onclick="show(1)">thêm môn học</div>
+    <center>
+      <div class="blog-content" id="content-1">
+        <div class="text-title">tên môn học</div>
+        <div class="text-content">
+          >
+          <input id="subject-name"></input>
+        </div>
+        <div class="text-title">số tín chỉ</div>
+        <div class="text-content">
+          >
+          <input id="subject-credit"></input>
+        </div>
+        <div class="text-title">trọng số quá trình</div>
+        <div class="text-content">
+          >
+          <input id="subject-middle-rate"></input>
+        </div>
+        <div class="text-title">điểm quá trình</div>
+        <div class="text-content">
+          >
+          <input id="subject-middle-point"></input>
+        </div>
+        <div class="text-title">điểm kết thúc</div>
+        <div class="text-content">
+          >
+          <input id="subject-end-point"></input>
+        </div>
+        <a class="submit" id="submit">thêm</a>
+        <a class="cancel" id="cancel" onclick="hide(1)">huỷ</a>
+      </div>
+    </center>
+    <div class="blog-title" id="title-2" onclick="show(2)">xoá môn học</div>
+    <center>
+      <div class="blog-content" id="content-2">
+        <div class="text-title">tên môn học</div>
+        <div class="text-content">
+          >
+          <input id="subject-name"></input>
+        </div>
+        <a class="submit" id="submit">xoá</a>
+        <a class="cancel" id="cancel" onclick="hide(2)">huỷ</a>
+      </div>
+    </center>
+    <div class="blog-title">tính điểm trung bình học kỳ</div>
+    <div class="blog-title">tính điểm trung bình tích luỹ</div>
+  </main>
+  <footer>
+    <div contenteditable="true">;</div>
+  </footer>
+  <script>
+    console.log("blog");
+
+    window.location.href = "#o_o";
+
+    let o_o = document.getElementById("o_o");
+
+    o_o.onclick = function() {
+      let value = o_o.innerHTML;
+      if (value === "o_o") o_o.innerHTML = ">_<";
+      else o_o.innerHTML = "o_o";
+    };
+
+    function show(id) {
+      document.getElementById("content-" + id.toString()).style.display = "block";
+      document.getElementById("title-" + id.toString()).style.display = "none";
+    }
+
+    function hide(id) {
+      document.getElementById("content-" + id.toString()).style.display = "none";
+      document.getElementById("title-" + id.toString()).style.display = "block";
+    }
+  </script>
+  <!-- <script src="script.js"></script> -->
+  <script scr="../script.js"></script>
+</body>
