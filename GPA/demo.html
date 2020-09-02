@@ -4,6 +4,13 @@
   <link rel="stylesheet" href="../style.css">
   <title>GPA calculator</title>
   <style>
+
+    .status {
+      margin-top: 1em;
+      font-size: 130%;
+      color: gray;
+    }
+
     .post {
       text-align: center;
     }
@@ -50,6 +57,7 @@
 
     .text-content {
       margin-bottom: 30px;
+      font-size: 90%;
       font-weight: bold;
     }
 
@@ -73,6 +81,10 @@
       font-size: 100%;
       border: none;
     }
+
+    input:focus {
+      outline: none;
+    }
   </style>
 </head>
 <body>
@@ -87,6 +99,8 @@
     <div id="o_o" class="o_o">o_o</div>
   </header>
   <main>
+    <div id="top"></div>
+    <marquee class="status" id="status"></marquee>
     <div class="blog-title" id="title-1" onclick="show(1)">thêm môn học</div>
     <center>
       <div class="blog-content" id="content-1">
@@ -115,8 +129,8 @@
           >
           <input id="subject-end-point"></input>
         </div>
-        <a class="submit" id="submit">thêm</a>
-        <a class="cancel" id="cancel" onclick="hide(1)">huỷ</a>
+        <a class="submit" id="submit-1">thêm</a>
+        <a class="cancel" id="cancel-1" onclick="hide(1)">huỷ</a>
       </div>
     </center>
     <div class="blog-title" id="title-2" onclick="show(2)">xoá môn học</div>
@@ -125,10 +139,10 @@
         <div class="text-title">tên môn học</div>
         <div class="text-content">
           >
-          <input id="subject-name"></input>
+          <input id="subject-name-2"></input>
         </div>
-        <a class="submit" id="submit">xoá</a>
-        <a class="cancel" id="cancel" onclick="hide(2)">huỷ</a>
+        <a class="submit" id="submit-2">xoá</a>
+        <a class="cancel" id="cancel-2" onclick="hide(2)">huỷ</a>
       </div>
     </center>
     <div class="blog-title">tính điểm trung bình học kỳ</div>
@@ -138,8 +152,6 @@
     <div contenteditable="true">;</div>
   </footer>
   <script>
-    console.log("blog");
-
     window.location.href = "#o_o";
 
     let o_o = document.getElementById("o_o");
@@ -149,17 +161,7 @@
       if (value === "o_o") o_o.innerHTML = ">_<";
       else o_o.innerHTML = "o_o";
     };
-
-    function show(id) {
-      document.getElementById("content-" + id.toString()).style.display = "block";
-      document.getElementById("title-" + id.toString()).style.display = "none";
-    }
-
-    function hide(id) {
-      document.getElementById("content-" + id.toString()).style.display = "none";
-      document.getElementById("title-" + id.toString()).style.display = "block";
-    }
   </script>
-  <!-- <script src="script.js"></script> -->
+  <script src="demo.js"></script>
   <script scr="../script.js"></script>
 </body>
