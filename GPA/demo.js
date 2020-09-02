@@ -53,10 +53,20 @@ function clearStatus() {
 }
 
 submit1.onclick = function() {
+
+  hide(2);
+  hide(3);
+  hide(4);
+
   addSubject();
+  display(0);
 };
 
 submit2.onclick = function() {
+
+  hide(1);
+  hide(3);
+  hide(4);
 
   if (subjects.length == 0) {
   	console.log("Chưa có môn học nào. Cần thêm môn học để xoá.");
@@ -65,9 +75,14 @@ submit2.onclick = function() {
   }
 
   removeSubject();
+  display(0);
 };
 
 submit3.onclick = function() {
+
+  hide(1);
+  hide(2);
+  hide(4);
 
   if (subjects.length == 0) {
   	console.log("Chưa có môn học nào. Cần thêm môn học để tính điểm.");
@@ -81,10 +96,23 @@ submit3.onclick = function() {
 
 submit4.onclick = function() {
 
-  let lastCredits = Number(document.getElementById("cpa-credits-4").value);
+  hide(1);
+  hide(2);
+  hide(3);
+
+  let lastCredits = document.getElementById("cpa-credits-4").value;
   let lastCPA = document.getElementById("cpa-4").value;
   let currentGPA = document.getElementById("gpa-4").value;
   let currentCredits = document.getElementById("credits-4").value;
+
+  if (lastCPA == "" || lastCredits == "") {
+  	console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
+  	showStatus("có lỗi xảy ra");
+  	return;
+  }
+
+  lastCPA = Number(lastCPA);
+  lastCredits = Number(lastCredits);
 
   if (currentGPA == "") currentGPA = GPA;
   else currentGPA = Number(currentGPA);
@@ -96,8 +124,6 @@ submit4.onclick = function() {
   	                       / (lastCredits + currentCredits)) / 100;
 
   if (isNaN(CPA)) {
-  	console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
-  	showStatus("đã có lỗi xảy ra");
   	return;
   }
 
@@ -168,11 +194,16 @@ function getSubject() {
 
 function checkSubject(subject) {
 
-  if (subject.name < 1) return false;
-  if (subject.credit < 0) return false;
-  if (subject.middleRate < 0 || subject.middleRate > 1) return false;
-  if (subject.middlePoint < 0 || subject.middlePoint > 10) return false;
-  if (subject.endPoint < 0 || subject.endPoint > 10) return false;
+  if (subject.name < 1)
+  	return false;
+  if (subject.credit < 0 || isNaN(subject.credit))
+  	return false;
+  if (subject.middleRate < 0 || subject.middleRate > 1 || isNaN(subject.middleRate))
+  	return false;
+  if (subject.middlePoint < 0 || subject.middlePoint > 10 || isNaN(subject.middlePoint))
+  	return false;
+  if (subject.endPoint < 0 || subject.endPoint > 10 || isNaN(subject.endPoint))
+  	return false;
 
   return true;
 }
@@ -218,7 +249,7 @@ function addSubject() {
 
   if (!checkSubject(subject)) {
   	console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
-  	showStatus("đã có lỗi xảy ra");
+  	showStatus("có lỗi xảy ra");
   	return;
   }
 
@@ -277,34 +308,25 @@ function display(id) {
 
   show(id);
 
-  let trFirst = document.createElement("tr");
-  let thName = document.createElement("th");
-  let thCredit = document.createElement("th");
-  let thPoint = document.createElement("th");
-  let thRank = document.createElement("th");
-  thName.innerHTML = "môn học";
-  trFirst.appendChild(thName);
-  thCredit.innerHTML = "tín chỉ";
-  trFirst.appendChild(thCredit);
-  thPoint.innerHTML = "điểm";
-  trFirst.appendChild(thPoint);
-  thRank.innerHTML = "loại";
-  trFirst.appendChild(thRank);
-  table.appendChild(trFirst);
+  if (subjects.length == 0) {
+  	table.innerHTML = "o_o";
+  	return;
+  }
 
+  const TR = "<tr>*</tr>";
+  const TH = "<th>môn</th><th>số tín</th><th>điểm thi</th><th>điểm</th><th>xếp loại</th>"
+  const TD = "<td>*</td>";
+
+  table.innerHTML = TR.replace("*", TH);
 
   for (var i = 0; i < subjects.length; i++) {
-  	tr = document.createElement("tr");
-    let td = document.createElement("td");
-    td.innerHTML = subjects[i].name;
-    tr.appendChild(td);
-    td.innerHTML = subjects[i].credit;
-    tr.appendChild(td);
-    td.innerHTML = subjects[i].point;
-    tr.appendChild(td);
-    td.innerHTML = subjects[i].rank;
-    tr.appendChild(td);
-    table.appendChild(tr);
+  	let tr = "";
+  	tr += TD.replace("*", subjects[i].name);
+  	tr += TD.replace("*", subjects[i].credit);
+  	tr += TD.replace("*", subjects[i].middlePoint + ", " + subjects[i].endPoint);
+  	tr += TD.replace("*", subjects[i].point);
+  	tr += TD.replace("*", subjects[i].rank);
+  	table.innerHTML += TR.replace("*", tr);
   }
 }
 

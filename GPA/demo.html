@@ -73,6 +73,17 @@
       text-decoration: underline;
     }
 
+    table {
+      margin-bottom: 30px;
+      color: black;
+      font-size: 100%;
+    }
+
+    th, td {
+      text-align: center;
+      width: 20%;
+    }
+
     input {
       font-size: 100%;
       border: none;
@@ -99,22 +110,7 @@
     <div class="blog-title" id="title-0"></div>
     <center>
       <div class="blog-content" id="content-0">
-        <div class="text-title">đang trong quá trình xây dựng</div>
-        <div class="text-content">
-          >
-          <input id="#"></input>
-        </div>
-        <div class="text-title">đang trong quá trình xây dựng</div>
-        <div class="text-content">
-          >
-          <input id="#"></input>
-        </div>
-        <div class="text-title">đang trong quá trình xây dựng</div>
-        <div class="text-content">
-          >
-          <input id="#"></input>
-        </div>
-        <table id="table">?</table>
+        <table class="table" id="table"></table>
         <a class="submit" id="submit-0" onclick="hide(0)">ẩn</a>
         <a class="cancel" id="cancel-0" onclick="reset(0)">xoá</a>
       </div>
@@ -177,22 +173,22 @@
     <div class="blog-title" id="title-4" onclick="show(4)">tính điểm trung bình tích luỹ</div>
     <center>
       <div class="blog-content" id="content-4">
-        <div class="text-title">điểm trung bình học kỳ này</div>
+        <div class="text-title">điểm trung bình kỳ này</div>
         <div class="text-content">
           >
           <input id="gpa-4"></input>
         </div>
-        <div class="text-title">số tín chỉ tích luỹ học kỳ này</div>
+        <div class="text-title">số tín kỳ này</div>
         <div class="text-content">
           >
           <input id="credits-4"></input>
         </div>
-        <div class="text-title">điểm trung bình tích luỹ học kỳ trước</div>
+        <div class="text-title">điểm tích luỹ</div>
         <div class="text-content">
           >
           <input id="cpa-4"></input>
         </div>
-        <div class="text-title">số tín chỉ tích luỹ học kỳ trước</div>
+        <div class="text-title">số tín tích luỹ</div>
         <div class="text-content">
           >
           <input id="cpa-credits-4"></input>
@@ -206,7 +202,7 @@
     </center>
   </main>
   <footer>
-    <div contenteditable="true" ondblclick="display(0)">;</div>
+    <div contenteditable="true">;</div>
   </footer>
   <script>
     window.location.href = "#o_o";
