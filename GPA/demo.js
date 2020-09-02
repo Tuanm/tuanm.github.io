@@ -40,8 +40,8 @@ let submit2 = document.getElementById("submit-2");
 function showStatus(content) {
   let status = document.getElementById("status");
   if (status.innerHTML == "") status.innerHTML = content;
-  window.location.href = "#top";
-  setTimeout(clearStatus, 5000);
+  window.location.href = "#o_o";
+  setTimeout(clearStatus, 2500);
 }
 
 function clearStatus() {
