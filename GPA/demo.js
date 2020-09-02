@@ -74,7 +74,7 @@ submit2.onclick = function() {
   	return;
   }
 
-  removeSubject();
+  deleteSubject();
   display(0);
 };
 
@@ -276,7 +276,7 @@ function addSubject() {
 }
 
 
-function removeSubject() {
+function deleteSubject() {
 
   let subject = {
 	name: "",
@@ -302,6 +302,15 @@ function removeSubject() {
 }
 
 
+function deleteSubject(index) {
+  console.log("Đã xoá " + subjects[index].name + ".");
+  showStatus("đã xoá " + subjects[index].name);
+  subjects.splice(index, 1);
+  console.table(subjects);
+  display(0);
+}
+
+
 let table = document.getElementById("table");
 
 function display(id) {
@@ -315,13 +324,13 @@ function display(id) {
 
   const TR = "<tr>*</tr>";
   const TH = "<th>môn</th><th>số tín</th><th>điểm thi</th><th>điểm</th><th>xếp loại</th>"
-  const TD = "<td>*</td>";
+  const TD = "<td onclick=\"deleteSubject(#)\" title=\"bấm để xoá\">*</td>";
 
   table.innerHTML = TR.replace("*", TH);
 
   for (var i = 0; i < subjects.length; i++) {
   	let tr = "";
-  	tr += TD.replace("*", subjects[i].name);
+  	tr += TD.replace("*", subjects[i].name).replace("#", i);
   	tr += TD.replace("*", subjects[i].credit);
   	tr += TD.replace("*", subjects[i].middlePoint + ", " + subjects[i].endPoint);
   	tr += TD.replace("*", subjects[i].point);
