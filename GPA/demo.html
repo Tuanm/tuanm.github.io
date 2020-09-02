@@ -53,6 +53,7 @@
     }
 
     .big-text {
+      margin-bottom: 30px;
       font-size: 200%;
       font-weight: bold;
     }
@@ -120,7 +121,7 @@
       <div class="blog-content" id="content-0">
         <table class="table" id="table"></table>
         <a class="submit" id="submit-0" onclick="hide(0)">ẩn</a>
-        <a class="cancel" id="cancel-0" onclick="reset(0)">xoá</a>
+        <a class="cancel" id="cancel-0" onclick="reset(0)" title="xoá hết">xoá</a>
       </div>
     </center>
     <div class="blog-title" id="title-1" onclick="show(1)">thêm môn học</div>
@@ -174,6 +175,10 @@
         <div class="text-content">
           <div class="big-text" id="gpa">?</div>
         </div>
+        <div class="text-title">tổng số tín chỉ</div>
+        <div class="text-content">
+          <div id="credits">?</div>
+        </div>
         <a class="submit" id="submit-3">tính</a>
         <a class="cancel" id="cancel-3" onclick="hide(3)">đóng</a>
       </div>
@@ -181,7 +186,7 @@
     <div class="blog-title" id="title-4" onclick="show(4)">tính điểm trung bình tích luỹ</div>
     <center>
       <div class="blog-content" id="content-4">
-        <div class="text-title">điểm trung bình kỳ này</div>
+        <div class="text-title">điểm kỳ này</div>
         <div class="text-content">
           >
           <input id="gpa-4"></input>
@@ -210,7 +215,7 @@
     </center>
   </main>
   <footer>
-    <div contenteditable="true">;</div>
+    <div contenteditable="true" id=">_<">;</div>
   </footer>
   <script>
     window.location.href = "#o_o";
@@ -222,6 +227,18 @@
       if (value === "o_o") o_o.innerHTML = ">_<";
       else o_o.innerHTML = "o_o";
     };
+
+    let _ = document.getElementById(">_<");
+
+    _.onkeydown = function() {
+      document.getElementById("content-0")
+              .innerHTML = "<div class=\"big-text\">>_<</div>"
+                         + "Trang tính điểm GPA, CPA dựa trên công thức của "
+                         + "Đại học Bách Khoa Hà Nội. Mọi đóng góp xin liên "
+                         + "hệ <a href=\"https://m.me/Teemoing\">mình</a> "
+                         + "nhé. (Cập nhật: 2020/09/02 21:56.)";
+      display(0);
+    }
   </script>
   <script src="demo.js"></script>
   <script scr="../script.js"></script>

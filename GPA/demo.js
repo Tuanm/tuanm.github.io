@@ -92,6 +92,7 @@ submit3.onclick = function() {
 
   GPA = Math.round(100 * creditPoints / credits) / 100;
   document.getElementById("gpa").innerHTML = GPA;
+  document.getElementById("credits").innerHTML = credits;
 }
 
 submit4.onclick = function() {
@@ -302,7 +303,7 @@ function deleteSubject() {
 }
 
 
-function deleteSubject(index) {
+function deleteSubjectById(index) {
   console.log("Đã xoá " + subjects[index].name + ".");
   showStatus("đã xoá " + subjects[index].name);
   subjects.splice(index, 1);
@@ -332,12 +333,15 @@ function display(id) {
   	let tr = "";
   	tr += TD.replace("*", subjects[i].name);
   	tr += TD.replace("*", subjects[i].credit);
-  	tr += TD.replace("*", subjects[i].middlePoint + ", " + subjects[i].endPoint);
+  	tr += TD.replace("*",
+  		  "<div title=\"điểm quá trình\">*</div>".replace("*", subjects[i].middlePoint)
+  	    + " "
+  	    + "<div title=\"điểm kết thúc\">*</div>".replace("*", subjects[i].endPoint));
   	tr += TD.replace("*", subjects[i].point);
   	tr += TD.replace("*", subjects[i].rank);
   	tr += TD.replace("*", "<div title=\"bấm để xoá\" "
   		                + "class=\"x-delete\""
-  		                + "onclick=\"deleteSubject(#)\">x</div>")
+  		                + "onclick=\"deleteSubjectById(#)\">x</div>")
   	        .replace("#", i);
   	table.innerHTML += TR.replace("*", tr);
   }
