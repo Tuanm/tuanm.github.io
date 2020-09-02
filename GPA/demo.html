@@ -2,7 +2,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="../style.css">
-  <title>GPA calculator</title>
+  <title>GPA calculator (demo)</title>
   <style>
 
     .status {
@@ -52,6 +52,11 @@
       font-weight: bold;
     }
 
+    .big-text {
+      font-size: 200%;
+      font-weight: bold;
+    }
+
     a.submit {
       color: black;
     }
@@ -91,6 +96,28 @@
   </header>
   <main>
     <div class="status" id="status"></div>
+    <div class="blog-title" id="title-0"></div>
+    <center>
+      <div class="blog-content" id="content-0">
+        <div class="text-title">đang trong quá trình xây dựng</div>
+        <div class="text-content">
+          >
+          <input id="#"></input>
+        </div>
+        <div class="text-title">đang trong quá trình xây dựng</div>
+        <div class="text-content">
+          >
+          <input id="#"></input>
+        </div>
+        <div class="text-title">đang trong quá trình xây dựng</div>
+        <div class="text-content">
+          >
+          <input id="#"></input>
+        </div>
+        <a class="submit" id="submit-0" onclick="hide(0)">ẩn</a>
+        <a class="cancel" id="cancel-0" onclick="reset(0)">xoá</a>
+      </div>
+    </center>
     <div class="blog-title" id="title-1" onclick="show(1)">thêm môn học</div>
     <center>
       <div class="blog-content" id="content-1">
@@ -135,11 +162,50 @@
         <a class="cancel" id="cancel-2" onclick="hide(2)">huỷ</a>
       </div>
     </center>
-    <div class="blog-title">tính điểm trung bình học kỳ</div>
-    <div class="blog-title">tính điểm trung bình tích luỹ</div>
+    <div class="blog-title" id="title-3" onclick="show(3)">tính điểm trung bình học kỳ</div>
+    <center>
+      <div class="blog-content" id="content-3">
+        <div class="text-title">điểm trung bình học kỳ</div>
+        <div class="text-content">
+          <div class="big-text" id="gpa">?</div>
+        </div>
+        <a class="submit" id="submit-3">tính</a>
+        <a class="cancel" id="cancel-3" onclick="hide(3)">đóng</a>
+      </div>
+    </center>
+    <div class="blog-title" id="title-4" onclick="show(4)">tính điểm trung bình tích luỹ</div>
+    <center>
+      <div class="blog-content" id="content-4">
+        <div class="text-title">điểm trung bình học kỳ này</div>
+        <div class="text-content">
+          >
+          <input id="gpa-4"></input>
+        </div>
+        <div class="text-title">số tín chỉ tích luỹ học kỳ này</div>
+        <div class="text-content">
+          >
+          <input id="credits-4"></input>
+        </div>
+        <div class="text-title">điểm trung bình tích luỹ học kỳ trước</div>
+        <div class="text-content">
+          >
+          <input id="cpa-4"></input>
+        </div>
+        <div class="text-title">số tín chỉ tích luỹ học kỳ trước</div>
+        <div class="text-content">
+          >
+          <input id="cpa-credits-4"></input>
+        </div>
+        <div class="text-content">
+          <div class="big-text" id="cpa">?</div>
+        </div>
+        <a class="submit" id="submit-4">tính</a>
+        <a class="cancel" id="cancel-4" onclick="hide(4)">đóng</a>
+      </div>
+    </center>
   </main>
   <footer>
-    <div contenteditable="true">;</div>
+    <div contenteditable="true" ondblclick="show(0)">;</div>
   </footer>
   <script>
     window.location.href = "#o_o";

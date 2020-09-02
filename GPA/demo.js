@@ -12,6 +12,7 @@ function hide(id) {
 
 
 let subjects = [];
+let GPA = 0;
 
 
 subjects.includes = function(subject) {
@@ -36,6 +37,8 @@ subjects.indexOf = function(subject) {
 
 let submit1 = document.getElementById("submit-1");
 let submit2 = document.getElementById("submit-2");
+let submit3 = document.getElementById("submit-3");
+let submit4 = document.getElementById("submit-4");
 
 function showStatus(content) {
   let status = document.getElementById("status");
@@ -54,9 +57,52 @@ submit1.onclick = function() {
 };
 
 submit2.onclick = function() {
+
+  if (subjects.length == 0) {
+  	console.log("Chưa có môn học nào. Cần thêm môn học để xoá.");
+  	showStatus("chưa có môn học nào");
+  	return;
+  }
+
   removeSubject();
 };
 
+submit3.onclick = function() {
+
+  if (subjects.length == 0) {
+  	console.log("Chưa có môn học nào. Cần thêm môn học để tính điểm.");
+  	showStatus("chưa có môn học nào");
+  	return;
+  }
+
+  GPA = Math.round(100 * creditPoints / credits) / 100;
+  document.getElementById("gpa").innerHTML = GPA;
+}
+
+submit4.onclick = function() {
+
+  let lastCredits = Number(document.getElementById("cpa-credits-4").value);
+  let lastCPA = document.getElementById("cpa-4").value;
+  let currentGPA = document.getElementById("gpa-4").value;
+  let currentCredits = document.getElementById("credits-4").value;
+
+  if (currentGPA == "") currentGPA = GPA;
+  else currentGPA = Number(currentGPA);
+
+  if (currentCredits == "") currentCredits = credits;
+  else currentCredits = Number(currentCredits);
+
+  let CPA = Math.round(100 * (lastCPA * lastCredits + currentGPA)
+  	                       / (lastCredits + currentCredits)) / 100;
+
+  if (isNaN(CPA)) {
+  	console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
+  	showStatus("đã có lỗi xảy ra");
+  	return;
+  }
+
+  document.getElementById("cpa").innerHTML = CPA;
+}
 
 function getSubjectRank(point) {
   if (point >= 9.5) return "A+";
@@ -71,20 +117,38 @@ function getSubjectRank(point) {
 }
 
 
+function getConversePoint(rank) {
+
+  switch (rank) {
+    case "A+":
+    case "A": return 4;
+    case "B+": return 3.5;
+    case "B": return 3;
+    case "C+": return 2.5;
+    case "C": return 2;
+    case "D+": return 1.5;
+    case "D": return 1;
+  }
+
+  return 0;
+}
+
+
 function getSubject() {
 
   let subject = {
 	name: "?",
-    credit: 0,
+    credit: 0.0,
     middleRate: 0.0,
     middlePoint: 0.0,
     endPoint: 0.0,
     point: 0.0,
-    rank: "F"
+    rank: "F",
+    conversePoint: 0.0
   };
 
   subject.name = document.getElementById("subject-name").value;
-  subject.credit = document.getElementById("subject-credit").value;
+  subject.credit = Number(document.getElementById("subject-credit").value);
   subject.middleRate = document.getElementById("subject-middle-rate").value;
   subject.middlePoint = document.getElementById("subject-middle-point").value;
   subject.endPoint = document.getElementById("subject-end-point").value;
@@ -95,6 +159,8 @@ function getSubject() {
   if (subject.middleRate != 0) {
   	if (subject.middlePoint < 3 || subject.endPoint < 3) subject.rank = "F";
   }
+
+  subject.conversePoint = getConversePoint(subject.rank);
 
   return subject;
 }
@@ -143,25 +209,34 @@ content1.onkeyup = function() {
 };
 
 
+let credits = 0;
+let creditPoints = 0
+
 function addSubject() {
 
   let subject = getSubject();
 
   if (!checkSubject(subject)) {
-  	console.log("Đã có lỗi gì đó xảy ra. Vui lòng kiểm tra lại.");
-  	showStatus("đã có lỗi gì đó xảy ra");
+  	console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
+  	showStatus("đã có lỗi xảy ra");
   	return;
   }
 
   let index = checkSubmit();
 
   if (index != -1) {
+  	credit = credits - subjects[index].credit + subject.credit;
+  	creditPoints = creditPoints
+  	             - subjects[index].credit * subjects[index].conversePoint
+  	             + subject.credit * subject.conversePoint;
     subjects[index] = subject;
     console.log("Đã sửa " + subject.name + ".");
     showStatus("đã sửa " + subject.name);
     console.table(subjects);
   }
   else {
+  	credits += subject.credit;
+  	creditPoints += subject.credit * subject.conversePoint;
   	subjects.push(subject);
     console.log("Đã thêm " + subject.name + ".");
     showStatus("đã thêm " + subject.name);
@@ -193,4 +268,16 @@ function removeSubject() {
   	console.log("Không tìm thấy " + subject.name + ".");
   	showStatus("không tìm thấy " + subject.name);
   }
+}
+
+
+function reset(id) {
+
+  hide(id);
+
+  subjects = [];
+
+  console.clear();
+  console.log("Đã xoá danh sách môn học.");
+  showStatus("đã xoá");
 }
