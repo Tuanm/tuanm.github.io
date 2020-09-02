@@ -271,6 +271,44 @@ function removeSubject() {
 }
 
 
+let table = document.getElementById("table");
+
+function display(id) {
+
+  show(id);
+
+  let trFirst = document.createElement("tr");
+  let thName = document.createElement("th");
+  let thCredit = document.createElement("th");
+  let thPoint = document.createElement("th");
+  let thRank = document.createElement("th");
+  thName.innerHTML = "môn học";
+  trFirst.appendChild(thName);
+  thCredit.innerHTML = "tín chỉ";
+  trFirst.appendChild(thCredit);
+  thPoint.innerHTML = "điểm";
+  trFirst.appendChild(thPoint);
+  thRank.innerHTML = "loại";
+  trFirst.appendChild(thRank);
+  table.appendChild(trFirst);
+
+
+  for (var i = 0; i < subjects.length; i++) {
+  	tr = document.createElement("tr");
+    let td = document.createElement("td");
+    td.innerHTML = subjects[i].name;
+    tr.appendChild(td);
+    td.innerHTML = subjects[i].credit;
+    tr.appendChild(td);
+    td.innerHTML = subjects[i].point;
+    tr.appendChild(td);
+    td.innerHTML = subjects[i].rank;
+    tr.appendChild(td);
+    table.appendChild(tr);
+  }
+}
+
+
 function reset(id) {
 
   hide(id);
