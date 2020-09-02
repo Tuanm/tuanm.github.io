@@ -323,18 +323,22 @@ function display(id) {
   }
 
   const TR = "<tr>*</tr>";
-  const TH = "<th>môn</th><th>số tín</th><th>điểm thi</th><th>điểm</th><th>xếp loại</th>"
-  const TD = "<td onclick=\"deleteSubject(#)\" title=\"bấm để xoá\">*</td>";
+  const TH = "<th>môn</th><th>số tín</th><th>điểm thi</th><th>điểm</th><th>xếp loại</th><th></th>"
+  const TD = "<td>*</td>";
 
   table.innerHTML = TR.replace("*", TH);
 
   for (var i = 0; i < subjects.length; i++) {
   	let tr = "";
-  	tr += TD.replace("*", subjects[i].name).replace("#", i);
+  	tr += TD.replace("*", subjects[i].name);
   	tr += TD.replace("*", subjects[i].credit);
   	tr += TD.replace("*", subjects[i].middlePoint + ", " + subjects[i].endPoint);
   	tr += TD.replace("*", subjects[i].point);
   	tr += TD.replace("*", subjects[i].rank);
+  	tr += TD.replace("*", "<div title=\"bấm để xoá\" "
+  		                + "class=\"x-delete\""
+  		                + "onclick=\"deleteSubject(#)\">x</div>")
+  	        .replace("#", i);
   	table.innerHTML += TR.replace("*", tr);
   }
 }
