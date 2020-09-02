@@ -39,7 +39,7 @@ let submit2 = document.getElementById("submit-2");
 
 function showStatus(content) {
   let status = document.getElementById("status");
-  status.innerHTML = content;
+  if (status.innerHTML == "") status.innerHTML = content;
   window.location.href = "#top";
   setTimeout(clearStatus, 5000);
 }
