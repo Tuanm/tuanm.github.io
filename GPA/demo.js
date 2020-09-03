@@ -131,6 +131,7 @@ submit4.onclick = function() {
   document.getElementById("cpa").innerHTML = CPA;
 }
 
+
 function getSubjectRank(point) {
   if (point >= 9.5) return "A+";
   if (point >= 8.5) return "A";
@@ -257,7 +258,7 @@ function addSubject() {
   let index = checkSubmit();
 
   if (index != -1) {
-  	credit = credits - subjects[index].credit + subject.credit;
+  	credits = credits - subjects[index].credit + subject.credit;
   	creditPoints = creditPoints
   	             - subjects[index].credit * subjects[index].conversePoint
   	             + subject.credit * subject.conversePoint;
@@ -291,6 +292,9 @@ function deleteSubject() {
 
   let index = subjects.indexOf(subject);
   if (index != -1) {
+    credits = credits - subjects[index].credit;
+    creditPoints = creditPoints
+                 - subjects[index].credit * subjects[index].conversePoint;
   	subjects.splice(index, 1);
   	console.log("Đã xoá " + subject.name + ".");
   	showStatus("đã xoá " + subject.name);
