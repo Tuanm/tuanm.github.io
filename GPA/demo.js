@@ -1,4 +1,4 @@
-console.log("demo");
+console.log("demo version - last update: 2020/09/03");
 
 function show(id) {
   document.getElementById("content-" + id.toString()).style.display = "block";
@@ -310,6 +310,9 @@ function deleteSubject() {
 function deleteSubjectById(index) {
   console.log("Đã xoá " + subjects[index].name + ".");
   showStatus("đã xoá " + subjects[index].name);
+  credits = credits - subjects[index].credit;
+  creditPoints = creditPoints
+               - subjects[index].credit * subjects[index].conversePoint;
   subjects.splice(index, 1);
   console.table(subjects);
   display(0);
@@ -338,7 +341,7 @@ function display(id) {
   	tr += TD.replace("*", subjects[i].name);
   	tr += TD.replace("*", subjects[i].credit);
   	tr += TD.replace("*",
-  		  "<div title=\"điểm quá trình\">*</div>".replace("*", subjects[i].middlePoint)
+  		    "<div title=\"điểm quá trình\">*</div>".replace("*", subjects[i].middlePoint)
   	    + " "
   	    + "<div title=\"điểm kết thúc\">*</div>".replace("*", subjects[i].endPoint));
   	tr += TD.replace("*", subjects[i].point);
