@@ -341,9 +341,11 @@ function display(id) {
   	tr += TD.replace("*", subjects[i].name);
   	tr += TD.replace("*", subjects[i].credit);
   	tr += TD.replace("*",
-  		    "<div title=\"điểm quá trình\">*</div>".replace("*", subjects[i].middlePoint)
+  		    "<div title=\"điểm quá trình (*)\">*</div>".replace("*", subjects[i].middleRate)
+                                                     .replace("*", subjects[i].middlePoint)
   	    + " "
-  	    + "<div title=\"điểm kết thúc\">*</div>".replace("*", subjects[i].endPoint));
+  	    + "<div title=\"điểm kết thúc (*)\">*</div>".replace("*", 1 - subjects[i].middleRate)
+                                                    .replace("*", subjects[i].endPoint));
   	tr += TD.replace("*", subjects[i].point);
   	tr += TD.replace("*", subjects[i].rank);
   	tr += TD.replace("*", "<div title=\"bấm để xoá\" "
