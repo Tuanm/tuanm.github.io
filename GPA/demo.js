@@ -1,4 +1,6 @@
-console.log("demo version - last update: 2020/09/03");
+console.log("demo version - latest update: 2020/09/07");
+console.log("by @Tuanm");
+
 
 function show(id) {
   document.getElementById("content-" + id.toString()).style.display = "block";
