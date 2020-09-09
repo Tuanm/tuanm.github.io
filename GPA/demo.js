@@ -1,5 +1,5 @@
-console.log("demo version - latest update: 2020/09/07");
-console.log("by @Tuanm");
+console.log("demo version - latest update: 2020/09/09");
+console.log("@Tuanm");
 
 
 function show(id) {
@@ -99,6 +99,9 @@ submit3.onclick = function() {
 
 submit4.onclick = function() {
 
+  submit3.onclick();
+  show(4);
+
   hide(1);
   hide(2);
   hide(3);
@@ -117,13 +120,19 @@ submit4.onclick = function() {
   lastCPA = Number(lastCPA);
   lastCredits = Number(lastCredits);
 
-  if (currentGPA == "") currentGPA = GPA;
+  if (currentGPA == "") {
+    currentGPA = GPA;
+    document.getElementById("gpa-4").value = currentGPA;
+  }
   else currentGPA = Number(currentGPA);
 
-  if (currentCredits == "") currentCredits = credits;
+  if (currentCredits == "") {
+    currentCredits = credits;
+    document.getElementById("credits-4").value = currentCredits;
+  }
   else currentCredits = Number(currentCredits);
 
-  let CPA = Math.round(100 * (lastCPA * lastCredits + currentGPA)
+  let CPA = Math.round(100 * (lastCPA * lastCredits + currentGPA * currentCredits)
   	                       / (lastCredits + currentCredits)) / 100;
 
   if (isNaN(CPA)) {
