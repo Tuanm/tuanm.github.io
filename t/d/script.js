@@ -217,8 +217,8 @@ function getNotif(d, day = "today") {
       }
       else if (time >= startTime && time < endTime) {
         notif += notReadTag + "In class " + detail[i]["subject"] +
-                               " in " + detail[i]["room"] +
-                               " ending at " + endTime.substring(0, 2) + ":" +
+                              " in " + detail[i]["room"] +
+                              " ending at " + endTime.substring(0, 2) + ":" +
                                                endTime.substring(2) + "." + "<br></div>";
       }
       else if (i == subjects - 1 && time >= endTime) {
@@ -247,6 +247,10 @@ function clickToHide(element) {
 }
 
 function showDetails() {
+  if (document.getElementById("today").innerHTML.includes("week")) {
+    document.getElementById("today").innerHTML = t[(new Date()).getDay()]["markAs"];
+    return;
+  }
   var week = getWeek(new Date());
   if (week % 10 == 1 && week != 11) week = week + "st";
   else if (week % 10 == 2 && week != 12) week = week + "nd";
