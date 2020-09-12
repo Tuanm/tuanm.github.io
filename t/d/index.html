@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="style.css">
+  <title>dung~</title>
+  <style>
+    .dialog {
+      margin-top:3em;
+      font-size: 160%;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      background: white;
+      color: black;
+      padding: 20px 20px;
+      border: none;
+      border-radius: 2px;
+      box-shadow: 3px 3px 10px 1px white;
+      max-width: 500px;
+      display: none;
+    }
+
+    .today {
+      margin-top: 3em;
+      font-size: 560%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .today:hover {
+      text-shadow: 3px 3px 10px gray;
+    }
+
+    .notif {
+      margin: 0;
+      font-size: 180%;
+      height: 10em;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <header href="#">
+    <a href="https://m.me/Teemoing">edit</a>
+    <a>|</a>
+    <a onclick="showDialog()">see more</a>
+    <a>|</a>
+    <a>...</a>
+    <center><div class="dialog" id="dialog" onclick="hideDialog()"></div></center>
+  </header>
+  <main id="main">
+    <div class="today" id="today">Hi!</div>
+    <div class="notif" id="notif"></div>
+  </main>
+  <footer><div onclick="window.location.href='#';" title="go top">!</div></footer>
+  <script src="script.js"></script>
+</body>
