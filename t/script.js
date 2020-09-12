@@ -1,5 +1,6 @@
 var greetings = document.getElementById("greetings");
 var image = document.getElementById("image");
+var back = document.getElementById("back");
 
 
 greetings.onclick = () => {
@@ -15,6 +16,9 @@ greetings.onclick = () => {
 
   window.location.href = "#image";
 };
+
+
+back.href = document.referer;
 
 
 var hide = (id) => {
