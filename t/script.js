@@ -18,7 +18,9 @@ greetings.onclick = () => {
 };
 
 
-back.href = document.referer;
+back.onclick = () => {
+  window.history.back();
+};
 
 
 var hide = (id) => {
