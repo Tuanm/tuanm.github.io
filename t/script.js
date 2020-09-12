@@ -1,3 +1,6 @@
+console.log("update: 2020/09/13");
+
+
 const IMAGE_SOURCE = "20201.png";
 
 var greetings = document.getElementById("greetings");

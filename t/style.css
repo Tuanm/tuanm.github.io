@@ -1,13 +1,27 @@
+body {
+  color: white;
+  background-color: #FFFF99;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: gray;
+}
+
 .greetings {
   margin-top: 2em;
   font-size: 400%;
   align-items: center;
   justify-content: center;
+  text-shadow: 3px 3px 10px gray;
   display: flex;
 }
 
 .greetings:hover {
-  text-shadow: 3px 3px 10px gray;
+  color: black;
 }
 
 img {
