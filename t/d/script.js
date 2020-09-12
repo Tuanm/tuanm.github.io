@@ -7,37 +7,77 @@ var t = [
     markAs: "Monday",
     detail: [
       {
-        time: "1230-1550",
-        room: "D6-405",
-        subject: "Computer Architectures",
-        id: "118185",
+        week: [7, 8, 9, 11, 12, 13, 14, 15, 16, 17],
+        time: "0645-0910",
+        room: "B1-201",
+        subject: "Introduction to Computer Science",
+        id: "699153",
       },
       {
-        time: "1600-1730",
-        room: "D6-405",
-        subject: "Object-Oriented Programming",
-        id: "118181",
+        week: [2, 4, 6, 8, 12, 14, 16, 18],
+        time: "0920-1005",
+        room: "TC-404",
+        subject: "Ho Chi Minh Ideology",
+        id: "120552",
+      },
+      {
+        week: [3, 5, 7, 9, 11, 13, 15, 17],
+        time: "0920-1145",
+        room: "TC-404",
+        subject: "Ho Chi Minh Ideology",
+        id: "120551",
+      },
+      {
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
+        time: "1400-1500",
+        room: "SVD",
+        subject: "Basketball I",
+        id: "638051",
+      },
+      {
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
+        time: "1530-1630",
+        room: "SanKTX",
+        subject: "Football I",
+        id: "637892",
       },
     ],
   },
   {
     markAs: "Tuesday",
-    detail: [],
+    detail: [
+      {
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
+        time: "0645-0910",
+        room: "D6-208",
+        subject: "Probability and Statistics",
+        id: "118373",
+      },
+    ],
   },
   {
     markAs: "Wednesday",
     detail: [
       {
-        time: "1230-1455",
-        room: "D6-403",
-        subject: "Mathematical Statistics",
-        id: "118183",
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
+        time: "0645-0815",
+        room: "D6-208",
+        subject: "Probability and Statistics",
+        id: "118373",
       },
       {
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
+        time: "1230-1455",
+        room: "D6-208",
+        subject: "Physics I",
+        id: "118375",
+      },
+      {
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
         time: "1505-1730",
-        room: "D6-403",
-        subject: "Operating Systems",
-        id: "118182",
+        room: "D6-208",
+        subject: "Introduction to Computer Science",
+        id: "118374",
       },
     ],
   },
@@ -45,29 +85,31 @@ var t = [
     markAs: "Thursday",
     detail: [
       {
-        time: "1230-1400",
-        room: "D6-405",
-        subject: "Object-Oriented Programming",
-        id: "118181",
+        week: [7, 8, 9],
+        time: "0730-1130",
+        room: "D3-502",
+        subject: "Physics II",
+        id: "698387",
       },
       {
-        time: "1410-1730",
-        room: "D6-405",
-        subject: "Data Structures and Algorithms",
-        id: "118184",
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
+        time: "1230-1400",
+        room: "D8-201",
+        subject: "Technical Drawing I",
+        id: "118379",
+      },
+      {
+        week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
+        time: "1410-1550",
+        room: "D8-302",
+        subject: "Physics II",
+        id: "118376",
       },
     ],
   },
   {
     markAs: "Friday",
-    detail: [
-      {
-        time: "1230-1550",
-        room: "D6-403",
-        subject: "Computation Programming",
-        id: "118186",
-      },
-    ],
+    detail: [],
   },
   {
     markAs: "Saturday",
@@ -75,6 +117,7 @@ var t = [
   },
 ];
 
+console.log("update: 2020/09/11");
 
 /* ONLY EDIT ABOVE STUFF*/
 
@@ -86,6 +129,7 @@ var t = [
 
 
 
+console.log("demo version");
 
 var hasAlerted = false;
 var safeStyle = "style=\"color: green;\"";
@@ -104,10 +148,22 @@ function hideDialog() {
   document.getElementById("main").style.display = "block";
 }
 
+
+function getWeek(d) {
+  var startDay = new Date(2020, 9, 13);
+  var startWeek = 2;
+  var milliSecDiff = d - startDay;
+  if (milliSecDiff < 0) return 0;
+  var diff = Math.ceil(milliSecDiff
+                    / (1000 * 60 * 60 * 24 * 7)) - 1;
+  return startWeek + diff;
+}
+
 var dialog = "";
 
 function getNotif(d, day = "today") {
   if (day == "today") dialog = "";
+  var week = getWeek(d);
   var hour = "" + d.getHours();
   var minute = "" + d.getMinutes();
   hour = hour.length == 2 ? hour : "0" + hour;
@@ -131,11 +187,11 @@ function getNotif(d, day = "today") {
     tomorrow.setDate(tomorrow.getDate() + 1);
     dialog += "Coming on <b>" + t[tomorrow.getDay()]["markAs"] + "</b>:<br>";
     getNotif(tomorrow, t[tomorrow.getDay()]["markAs"]);
-
   }
   else {
     notif = tag + notif + "<br></div>";
     for (var i = 0; i < subjects; i++) {
+      if (!detail[i]["week"].includes(week)) continue;
       var startTime = detail[i]["time"].substring(0, 4);
       var endTime = detail[i]["time"].substring(5);
       dialog += "<b>" +
@@ -233,6 +289,3 @@ setInterval(function() {
 var timeToUpdate = 60000; // :))
 
 setInterval(justDoIt, timeToUpdate);
-
-console.log("demo version");
-console.log("2020/09");
