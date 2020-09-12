@@ -150,10 +150,10 @@ function hideDialog() {
 
 
 function getWeek(d) {
+  var today = new Date(d.getFullYear(), d.getMonth() == 0 ? 12 : d.getMonth(), d.getDate());
   var startDay = new Date(2020, 9, 13);
   var startWeek = 2;
-  var milliSecDiff = d - startDay;
-  if (milliSecDiff < 0) return 0;
+  var milliSecDiff = Math.abs(today - startDay);
   var diff = Math.ceil(milliSecDiff
                     / (1000 * 60 * 60 * 24 * 7)) - 1;
   return startWeek + diff;
@@ -185,7 +185,7 @@ function getNotif(d, day = "today") {
     }
     var tomorrow = new Date(d);
     tomorrow.setDate(tomorrow.getDate() + 1);
-    dialog += "Coming on <b>" + t[tomorrow.getDay()]["markAs"] + "</b>:<br>";
+    dialog += "<br>Coming on <b>" + t[tomorrow.getDay()]["markAs"] + "</b>:<br><br>";
     getNotif(tomorrow, t[tomorrow.getDay()]["markAs"]);
   }
   else {
@@ -223,6 +223,10 @@ function getNotif(d, day = "today") {
       }
       else if (i == subjects - 1 && time >= endTime) {
         notif += notReadTag + "No more classes." + "<br></div>";
+        var tomorrow = new Date(d);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dialog += "<br>Coming on <b>" + t[tomorrow.getDay()]["markAs"] + "</b>:<br><br>";
+        getNotif(tomorrow, t[tomorrow.getDay()]["markAs"]);
         notif = notif.replace(tag, tag.replace(normalStyle, safeStyle));
       }
     }
@@ -240,6 +244,15 @@ function replaceAll(str, subStr, repStr) {
 
 function clickToHide(element) {
   element.style.display = "none";
+}
+
+function showDetails() {
+  var week = getWeek(new Date());
+  if (week % 10 == 1 && week != 11) week = week + "st";
+  else if (week % 10 == 2 && week != 12) week = week + "nd";
+  else if (week % 10 == 3 && week != 13) week = week + "rd";
+  else week = week + "th";
+  document.getElementById("today").innerHTML = week + " week ";
 }
 
 var updateTime = 0;
