@@ -1,3 +1,5 @@
+const IMAGE_SOURCE = "20201.png";
+
 var greetings = document.getElementById("greetings");
 var image = document.getElementById("image");
 var back = document.getElementById("back");
@@ -15,6 +17,11 @@ greetings.onclick = () => {
   }
 
   window.location.href = "#image";
+};
+
+
+image.onbblclick = () => {
+  window.location.href = IMAGE_SOURCE;
 };
 
 
