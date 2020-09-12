@@ -20,7 +20,7 @@ greetings.onclick = () => {
 };
 
 
-image.onbblclick = () => {
+image.ondblclick = () => {
   window.location.href = IMAGE_SOURCE;
 };
 
