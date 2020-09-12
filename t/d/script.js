@@ -223,10 +223,12 @@ function getNotif(d, day = "today") {
       }
       else if (i == subjects - 1 && time >= endTime) {
         notif += notReadTag + "No more classes." + "<br></div>";
-        var tomorrow = new Date(d);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        dialog += "<br>Coming on <b>" + t[tomorrow.getDay()]["markAs"] + "</b>:<br><br>";
-        getNotif(tomorrow, t[tomorrow.getDay()]["markAs"]);
+        if (day == "today") {
+          var tomorrow = new Date(d);
+          tomorrow.setDate(tomorrow.getDate() + 1);
+          dialog += "<br>Coming on <b>" + t[tomorrow.getDay()]["markAs"] + "</b>:<br><br>";
+          getNotif(tomorrow, t[tomorrow.getDay()]["markAs"]);
+        }
         notif = notif.replace(tag, tag.replace(normalStyle, safeStyle));
       }
     }
