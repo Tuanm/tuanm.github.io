@@ -39,7 +39,7 @@
 </head>
 <body>
   <main>
-    <p>
+    <p id="quote">
       To live is to <a id="risk">risk</a> it all;<br>
       otherwise you're just an inert chunk<br>
       of randomly assembled molecules<br>
@@ -61,7 +61,7 @@
 
     var risk = document.getElementById("risk");
     risk.onclick = function() {
-      openFullscreen(document.documentElement);
+      document.getElementById("quote").style.display = "none";
     }
   </script>
 </body>
