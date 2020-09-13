@@ -28,6 +28,9 @@ image.ondblclick = () => {
 };
 
 
+back.style.fontFamily = "monospace";
+
+
 back.onclick = () => {
   window.history.back();
 };
