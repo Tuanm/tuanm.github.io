@@ -5,6 +5,7 @@ body {
 
 a {
   color: black;
+  font-family: monospace;
   font-size: 200%;
   font-weight: bold;
 }
