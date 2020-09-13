@@ -1,10 +1,12 @@
 body {
   color: white;
-  background-color: #FFFF99;
+  background-color: #ffff99;
 }
 
 a {
   color: black;
+  font-size: 200%;
+  font-weight: bold;
 }
 
 a:hover {
@@ -21,11 +23,12 @@ a:hover {
 }
 
 .greetings:hover {
-  color: black;
+  color: #f7f9f9;
 }
 
 img {
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
   display: none;
 }
