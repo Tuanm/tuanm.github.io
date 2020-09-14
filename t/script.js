@@ -1,4 +1,4 @@
-console.log("update: 2020/09/13");
+console.log("update: 2020/09/14");
 
 
 window.location.href = "#greetings";
