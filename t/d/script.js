@@ -13,20 +13,20 @@ var t = [
         subject: "Introduction to Computer Science",
         id: "699153",
       },
-      {
-        week: [2, 4, 6, 8, 12, 14, 16, 18],
-        time: "0920-1005",
-        room: "TC-404",
-        subject: "Ho Chi Minh Ideology",
-        id: "120552",
-      },
-      {
-        week: [3, 5, 7, 9, 11, 13, 15, 17],
-        time: "0920-1145",
-        room: "TC-404",
-        subject: "Ho Chi Minh Ideology",
-        id: "120551",
-      },
+      // {
+      //   week: [2, 4, 6, 8, 12, 14, 16, 18],
+      //   time: "0920-1005",
+      //   room: "TC-404",
+      //   subject: "Ho Chi Minh Ideology",
+      //   id: "120552",
+      // },
+      // {
+      //   week: [3, 5, 7, 9, 11, 13, 15, 17],
+      //   time: "0920-1145",
+      //   room: "TC-404",
+      //   subject: "Ho Chi Minh Ideology",
+      //   id: "120551",
+      // },
       {
         week: [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18],
         time: "1400-1500",
@@ -117,7 +117,7 @@ var t = [
   },
 ];
 
-console.log("update: 2020/09/11");
+console.log("update: 2020/09/14");
 
 /* ONLY EDIT ABOVE STUFF*/
 
@@ -148,9 +148,20 @@ function hideDialog() {
   document.getElementById("main").style.display = "block";
 }
 
+function changeColor() {
+  if (document.body.style.backgroundColor == "black") {
+    document.body.style.backgroundColor = "pink";
+    document.body.style.color = "black";
+  }
+  else {
+    document.body.style.backgroundColor = "black";
+    document.body.style.color = "white";
+  }
+}
+
 
 function getWeek(d) {
-  var today = new Date(d.getFullYear(), d.getMonth() == 0 ? 12 : d.getMonth(), d.getDate());
+  var today = new Date(d.getFullYear(), d.getMonth() == 0 ? 12 : d.getMonth() + 1, d.getDate());
   var startDay = new Date(2020, 9, 13);
   var startWeek = 2;
   var milliSecDiff = Math.abs(today - startDay);

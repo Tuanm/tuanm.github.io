@@ -1,11 +1,15 @@
 console.log("update: 2020/09/13");
 
 
+window.location.href = "#greetings";
+
+
 const IMAGE_SOURCE = "20201.png";
 
 var greetings = document.getElementById("greetings");
 var image = document.getElementById("image");
 var back = document.getElementById("back");
+var more = document.getElementById("more");
 
 
 greetings.onclick = () => {
@@ -19,7 +23,7 @@ greetings.onclick = () => {
     greetings.innerHTML = "open";
   }
 
-  window.location.href = "#image";
+  window.location.href = "#greetings";
 };
 
 
@@ -28,11 +32,13 @@ image.ondblclick = () => {
 };
 
 
-back.style.fontFamily = "monospace";
-
-
 back.onclick = () => {
   window.history.back();
+};
+
+
+more.onclick = () => {
+  window.location.href = "https://tuanm.github.io/blog";
 };
 
 
