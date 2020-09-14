@@ -148,6 +148,9 @@ function hideDialog() {
   document.getElementById("main").style.display = "block";
 }
 
+
+document.body.style.backgroundColor = "black";
+
 function changeColor() {
   if (document.body.style.backgroundColor == "black") {
     document.body.style.backgroundColor = "pink";
