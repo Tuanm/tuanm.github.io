@@ -1,0 +1,39 @@
+body {
+  font-family: monospace;
+  background-color: #fffbbd;
+}
+
+main {
+  margin-top: 5em;
+  margin-bottom: 5em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.title {
+  font-size: 325%;
+}
+
+.source {
+  margin-top: 2em;
+  margin-bottom: 3em;
+}
+
+.content {
+  text-align: justify;
+}
+
+h1 {
+  font-size: 250%;
+  margin-top: 3em;
+}
+
+h2 {
+  font-size: 225%;
+  margin-top: 2em;
+}
+
+p, li {
+  font-size: 200%;
+}
