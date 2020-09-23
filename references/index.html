@@ -1,31 +1,52 @@
+﻿<head>
+    <style>
+        body {
+            font-family: serif;
+            font-size: 400%;
+            background-color: #f2eecb;
+        }
+
+        header {
+            width: 80%;
+            margin: 10%;
+            margin-bottom: 5%;
+        }
+
+        main {
+            width: 80%;
+            margin: 10%;
+            margin-top: 5%;
+        }
+
+        a {
+            margin-left: 5%;
+            text-decoration: none;
+        }
+    </style>
+</head>
 <body>
-  <script>
-
-    document.documentElement.style.fontFamily = "Consolas";
-
-    first = {
-        href: "https://drive.google.com/drive/folders/1EwCUcIvTYw_GcY5Yw9MxsAUtqw_CB_13?usp=sharing",
-        text: "Tai lieu hoc tap"
-    };
-
-    second = {
-        href: "https://drive.google.com/drive/folders/1VtN3pJo6p0XACSxnXEk_GpZxGZnn7_en?usp=sharing",
-        text: "Tai lieu lap trinh"
-    };
-
-    let index = 0;
-
-    function createTag(href, text) {
-        let div = document.createElement("a");
-        div.style.fontSize = "600%";
-        div.style.textDecoration = "none";
-        div.title = text.toLowerCase();
-        div.href = href;
-        div.innerHTML = ++index + " - " + text + "<br>";
-        document.body.appendChild(div);
-    }
-
-    createTag(first.href, first.text);
-    createTag(second.href, second.text);
-  </script>
+    <header>
+        References
+    </header>
+    <main>
+        <div>
+            1
+            <a href="https://drive.google.com/drive/folders/1EwCUcIvTYw_GcY5Yw9MxsAUtqw_CB_13?usp=sharing">
+                Drive: Tài liệu học tập
+            </a>
+        </div>
+        <div>
+            2
+            <a href="https://drive.google.com/drive/folders/1VtN3pJo6p0XACSxnXEk_GpZxGZnn7_en?usp=sharing">
+                Drive: Tài liệu lập trình
+            </a>
+        </div>
+        <div>
+            3
+            <a href="https://arxiv.org/">
+                arXiv e-print repository
+            </a>
+        </div>
+    </main>
+    
 </body>
