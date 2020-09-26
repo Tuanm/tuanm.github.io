@@ -53,6 +53,7 @@
 
     var getImg = () => {
       var id = document.getElementById('student_id').value;
+      if (id.length != 8) return;
       for (var idx = 0; idx < _IMG.length; idx++) {
         getSrc(id, idx);
       }
