@@ -2,11 +2,11 @@
   <title>2</title>
   <style>
     * {
-      font-size: 150%;
+      font-size: 130%;
     }
 
     img {
-      max-width: 80%;
+      max-width: 70%;
     }
   </style>
 </head>
@@ -36,10 +36,10 @@
       var id = document.getElementById('student_id').value;
       for (var idx = 0; idx < _IMG.length; idx++) {
         url = URL_.replace("*", id + _IMG[idx]);
-        if (isGood(url)) {
+        // if (isGood(url)) {
           document.getElementById('student_img').src = url;
-          return;
-        }
+          // return;
+        // }
       }
       alert("An Error Occured.");
     };
