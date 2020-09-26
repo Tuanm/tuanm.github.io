@@ -2,35 +2,46 @@
   <title>2</title>
   <style>
     * {
-      font-size: 130%;
+      font-size: 200%;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0f2027;
+    }
+
+    input {
+      margin-bottom: 2em;
+      font-size: 1.2rem;
+      color: #333;
+      padding: 1.5rem 2rem;
+      background-color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 0.2rem;
+      border-bottom: 0.3rem solid transparent;
     }
 
     img {
-      max-width: 70%;
+      margin: 0.1em;
+      max-width: 80%;
+      border-radius: 0.2rem;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div>
-    <input id="student_id" placeholder="20070010">
-    <input id="submit" type="submit" value="Find" onclick="getIMG()">
-  </div>
-  <div>
-    <img id="student_img" src="#">
-  </div>
+  <center>
+    <div>
+      <input id="student_id" type="text" placeholder="20070010">
+      <input id="submit" type="submit" value="Find" onclick="getIMG()">
+    </div>
+    <div>
+      <img id="student_img" src="#">
+    </div>
+  </center>
   <script>
     const URL_ = 'https://ctt-sis.hust.edu.vn/Content/Anh/anh_*';
-    const _IMG = [".jpg", ".jpeg", ".png"];
-
-    var url = "#";
-
-    var isGood = (url) => {
-      var http = new XMLHttpRequest();
-      http.open('HEAD', url, false);
-      http.send();
-      if (http.status == 200) return true;
-      return false;
-    }
+    const _IMG = [".jpg", ".jpeg", ".png", ".gif"];
 
     async function isOK(url) {
       var response = await fetch(url);
@@ -40,13 +51,13 @@
     var getIMG = () => {
       var id = document.getElementById('student_id').value;
       for (var idx = 0; idx < _IMG.length; idx++) {
-        url = URL_.replace("*", id + _IMG[idx]);
+        var url = URL_.replace("*", id + _IMG[idx]);
         if (isOK(url)) {
           document.getElementById('student_img').src = url;
+          document.getElementById('student_img').style.display = "block";
           return;
         }
       }
-      alert("An Error Occured.");
     };
   </script>
 </body>
