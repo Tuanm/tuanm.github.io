@@ -32,14 +32,19 @@
       return false;
     }
 
+    async function isOK(url) {
+      var response = await fetch(url);
+      return response.ok;
+    }
+
     var getIMG = () => {
       var id = document.getElementById('student_id').value;
       for (var idx = 0; idx < _IMG.length; idx++) {
         url = URL_.replace("*", id + _IMG[idx]);
-        // if (isGood(url)) {
+        if (isOK(url)) {
           document.getElementById('student_img').src = url;
-          // return;
-        // }
+          return;
+        }
       }
       alert("An Error Occured.");
     };
