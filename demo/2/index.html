@@ -25,7 +25,6 @@
       margin: 0.1em;
       max-width: 80%;
       border-radius: 0.2rem;
-      display: none;
     }
   </style>
 </head>
@@ -36,10 +35,10 @@
       <input id="submit" type="submit" value="Find" onclick="getImg()">
     </div>
     <div>
-      <img id="student_img_jpg" src="#" download>
-      <img id="student_img_jpeg" src="#" download>
-      <img id="student_img_png" src="#" download>
-      <img id="student_img_gif" src="#" download>
+      <img id="student_img_jpg" src="#" onerror="this.style.display='none'">
+      <img id="student_img_jpeg" src="#" onerror="this.style.display='none'">
+      <img id="student_img_png" src="#" onerror="this.style.display='none'">
+      <img id="student_img_gif" src="#" onerror="this.style.display='none'">
     </div>
   </center>
   <script>
@@ -47,16 +46,8 @@
     const _IMG = [".jpg", ".jpeg", ".png", ".gif"];
 
     var getSrc = (id, idx) => {
-      document.getElementById('student_img_' + _IMG[idx].substring(1))
-        .src = URL_.replace("*", id + _IMG[idx]);
-    };
-
-    var checkImg = (idx) => {
-      var img = document.getElementById('student_img_' + _IMG[idx].substring(1));
-      if (img.width <= 24) {
-        img.style.display = "none";
-        return;
-      }
+      var img = document.getElementById('student_img_' + _IMG[idx].substring(1))
+      img.src = URL_.replace("*", id + _IMG[idx]);
       img.style.display = "block";
     };
 
@@ -64,7 +55,6 @@
       var id = document.getElementById('student_id').value;
       for (var idx = 0; idx < _IMG.length; idx++) {
         getSrc(id, idx);
-        checkImg(idx);
       }
     };
   </script>
