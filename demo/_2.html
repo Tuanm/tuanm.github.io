@@ -1,0 +1,47 @@
+<head>
+  <title>2</title>
+  <style>
+    * {
+      font-size: 150%;
+    }
+
+    img {
+      max-width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input id="student_id" placeholder="20070010">
+    <input id="submit" type="submit" value="Find" onclick="getIMG()">
+  </div>
+  <div>
+    <img id="student_img" src="#">
+  </div>
+  <script>
+    const URL_ = 'https://ctt-sis.hust.edu.vn/Content/Anh/anh_*';
+    const _IMG = [".jpg", ".jpeg", ".png"];
+
+    var url = "#";
+
+    var isGood = (url) => {
+      var http = new XMLHttpRequest();
+      http.open('HEAD', url, false);
+      http.send();
+      if (http.status == 200) return true;
+      return false;
+    }
+
+    var getIMG = () => {
+      var id = document.getElementById('student_id').value;
+      for (var idx = 0; idx < _IMG.length; idx++) {
+        url = URL_.replace("*", id + _IMG[idx]);
+        if (isGood(url)) {
+          document.getElementById('student_img').src = url;
+          return;
+        }
+      }
+      alert("An Error Occured.");
+    };
+  </script>
+</body>
