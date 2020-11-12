@@ -107,11 +107,9 @@
   <header>
     <a href="..">nhà</a>
     <a>|</a>
+    <a href="../references">rác</a>
+    <a>|</a>
     <a href="#">#</a>
-    <a>|</a>
-    <a href="../t">lịch học</a>
-    <a>|</a>
-    <a href="../blog">bờ-lốc</a>
     <div id="o_o" class="o_o">o_o</div>
   </header>
   <main>
@@ -220,9 +218,17 @@
     </center>
   </main>
   <footer>
-    <div contenteditable="true" id=">_<">;</div>
+    <div contenteditable="true" id=">_<">sửa dòng này để góp ý</div>
   </footer>
   <script>
+    let g9 = () => {
+      if (new Date().getHours() >= 23)
+        alert("Đi ngủ thôi bạn gì ơi!");
+    };
+
+    g9(); // for fun
+
+
     window.location.href = "#o_o";
 
     let o_o = document.getElementById("o_o");
@@ -238,10 +244,12 @@
     _.onkeydown = function() {
       document.getElementById("content-69")
               .innerHTML = "<div class=\"big-text\">>_<</div>"
-                         + "<i>Cập nhật: 2020/09/09</i><br>"
-                         + "<br>Trang tính điểm (GPA và CPA) dựa trên công thức của "
-                         + "    Đại học Bách Khoa Hà Nội. Mọi đóng góp mình xin ghi "
-                         + "    nhận nhé. Cảm ơn nha!                               ";
+                         + "<b>Cập nhật: 2020/11/12</b><br>"
+                         + "<br>Trang tính điểm (GPA và CPA) dựa trên công thức của    "
+                         + "    Đại học Bách Khoa Hà Nội. Mọi đóng góp mình xin ghi    "
+                         + "    nhận nhé. Cảm ơn nha!                              <br>"
+                         + "<br><a class='submit' href='https://m.me/Teemoing'         "
+                         + "       target='_blank' title='gửi qua Messenger nha'>ok</a>";
       show(69);
     }
   </script>
