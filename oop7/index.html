@@ -23,6 +23,7 @@
         footer {
             font-size: 30%;
             text-align: center;
+            margin-bottom: 2%;
         }
 
         a {
@@ -31,72 +32,110 @@
         }
 
         a:hover {
+            color: white;
+        }
+
+        .color-gray {
+            color: gray;
+        }
+
+        .color-black {
             color: black;
         }
     </style>
 </head>
 <body>
-    <header title="Viblo almost">
+    <header>
         References
+        <a class="color-gray"
+           href="https://github.com/Tuanm/design-pattern"
+           title="Visit our repository on GitHub"
+           target="_blank">
+            Repository
+        </a>
     </header>
     <main>
         <div>
             1
-            <a href="https://viblo.asia/p/design-patterns-decorator-pattern-vyDZOzq9Kwj"
+            <a class="color-black"
+               href="https://viblo.asia/p/design-patterns-decorator-pattern-vyDZOzq9Kwj"
+               title="Viblo"
                target="_blank">
                 Decorator Pattern
             </a>
         </div>
         <div>
             2
-            <a href="https://viblo.asia/p/design-pattern-factory-pattern-part-1-XqaGEmxZGWK"
+            <a class="color-black"
+               href="https://viblo.asia/p/design-pattern-factory-pattern-part-1-XqaGEmxZGWK"
+               title="Viblo"
                target="_blank">
                 Factory Pattern
             </a>
         </div>
         <div>
             3
-            <a href="https://viblo.asia/p/design-pattern-factory-pattern-part-2-XQZGxZqjkwA"
+            <a class="color-black"
+               href="https://viblo.asia/p/design-pattern-factory-pattern-part-2-XQZGxZqjkwA"
+               title="Viblo"
                target="_blank">
                 Factory Pattern (2)
             </a>
         </div>
         <div>
             4
-            <a href="https://viblo.asia/p/object-oriented-design-pattern-factory-method-va-abstract-factory-method-DZrkNoKavVB"
+            <a class="color-black"
+               href="https://viblo.asia/p/object-oriented-design-pattern-factory-method-va-abstract-factory-method-DZrkNoKavVB"
+               title="Viblo"
                target="_blank">
                 Factory Pattern (3)
             </a>
         </div>
         <div>
             5
-            <a href="https://viblo.asia/p/design-patterns-iterator-pattern-L4x5x0jw5BM"
+            <a class="color-black"
+               href="https://viblo.asia/p/design-patterns-iterator-pattern-L4x5x0jw5BM"
+               title="Viblo"
                target="_blank">
                 Iterator Pattern
             </a>
         </div>
         <div>
             6
-            <a href="https://viblo.asia/p/design-pattern-iterator-pattern-oOVlYewol8W"
+            <a class="color-black"
+               href="https://viblo.asia/p/design-pattern-iterator-pattern-oOVlYewol8W"
+               title="Viblo"
                target="_blank">
                 Iterator Pattern (2)
             </a>
         </div>
         <div hidden="true">
             0
-            <a href="#"
+            <a class="color-black"
+               href="#"
+               title="updating..."
                target="_blank">
                 updating...
             </a>
         </div>
     </main>
     <footer>
-        <a href="https://m.me/4758094300928682"
-           title="If you have any questions, contribute now!">
+        <a class="color-gray"
+           href="https://m.me/4758094300928682"
+           title="If you have any questions, contribute now!"
+           target="_blank">
             Any questions?
         </a>
     </footer>
     <script>
-        console.log("update: 2020/11/11");
+        console.log("update: 2020/11/13");
+
+        let g9 = () => {
+            var d = new Date();
+            if (d.getHours() >= 23 || d.getHours() <= 3)
+                alert("Time to sleep, bro!");
+        };
+
+        setInterval(g9, 10000); // for fun
     </script>
 </body>

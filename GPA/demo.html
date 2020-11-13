@@ -222,11 +222,12 @@
   </footer>
   <script>
     let g9 = () => {
-      if (new Date().getHours() >= 23)
+      var d = new Date();
+      if (d.getHours() >= 23 || d.getHours() <= 3)
         alert("Đi ngủ thôi bạn gì ơi!");
     };
 
-    g9(); // for fun
+    setInterval(g9, 60000); // for fun
 
 
     window.location.href = "#o_o";
