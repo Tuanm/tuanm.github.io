@@ -1,8 +1,9 @@
 //
+// LOG - 201115: Add a comma
 // LOG - 201114: Fix indentations
 //
 
-console.log("demo version - latest update: 2020/11/14");
+console.log("demo version - latest update: 2020/11");
 console.log("             - Tuanm");
 
 
@@ -346,7 +347,7 @@ function display(id) {
   }
 
   const TR = "<tr>*</tr>";
-  const TH = "<th>môn</th><th>số tín</th><th>điểm thi</th><th>điểm</th><th>xếp loại</th><th></th>"
+  const TH = "<th>môn</th><th>số tín</th><th>điểm thi</th><th>điểm</th><th>xếp loại</th><th></th>";
   const TD = "<td>*</td>";
 
   table.innerHTML = TR.replace("*", TH);
