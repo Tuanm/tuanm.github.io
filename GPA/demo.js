@@ -1,5 +1,5 @@
-console.log("demo version - latest update: 2020/11/12");
-console.log("@Tuanm");
+console.log("demo version - latest update: 2020/11/14");
+console.log("             - Tuanm");
 
 
 function show(id) {
