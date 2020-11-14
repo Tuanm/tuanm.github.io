@@ -1,3 +1,7 @@
+//
+// LOG - 201114: Fix indentations
+//
+
 console.log("demo version - latest update: 2020/11/14");
 console.log("             - Tuanm");
 
@@ -20,7 +24,7 @@ let GPA = 0;
 subjects.includes = function(subject) {
 
   for (var i = 0; i < subjects.length; i++) {
-  	if (subject.name === subjects[i].name) return true;
+    if (subject.name === subjects[i].name) return true;
   }
 
   return false;
@@ -30,7 +34,7 @@ subjects.includes = function(subject) {
 subjects.indexOf = function(subject) {
 
   for (var i = 0; i < subjects.length; i++) {
-  	if (subject.name == subjects[i].name) return i;
+    if (subject.name == subjects[i].name) return i;
   }
 
   return -1;
@@ -71,9 +75,9 @@ submit2.onclick = function() {
   hide(4);
 
   if (subjects.length == 0) {
-  	console.log("Chưa có môn học nào. Cần thêm môn học để xoá.");
-  	showStatus("chưa có môn học nào");
-  	return;
+    console.log("Chưa có môn học nào. Cần thêm môn học để xoá.");
+    showStatus("chưa có môn học nào");
+    return;
   }
 
   deleteSubject();
@@ -87,9 +91,9 @@ submit3.onclick = function() {
   hide(4);
 
   if (subjects.length == 0) {
-  	console.log("Chưa có môn học nào. Cần thêm môn học để tính điểm.");
-  	showStatus("chưa có môn học nào");
-  	return;
+    console.log("Chưa có môn học nào. Cần thêm môn học để tính điểm.");
+    showStatus("chưa có môn học nào");
+    return;
   }
 
   GPA = Math.round(100 * creditPoints / credits) / 100;
@@ -112,9 +116,9 @@ submit4.onclick = function() {
   let currentCredits = document.getElementById("credits-4").value;
 
   if (lastCPA == "" || lastCredits == "") {
-  	console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
-  	showStatus("có lỗi xảy ra");
-  	return;
+    console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
+    showStatus("có lỗi xảy ra");
+    return;
   }
 
   lastCPA = Number(lastCPA);
@@ -133,10 +137,10 @@ submit4.onclick = function() {
   else currentCredits = Number(currentCredits);
 
   let CPA = Math.round(100 * (lastCPA * lastCredits + currentGPA * currentCredits)
-  	                       / (lastCredits + currentCredits)) / 100;
+                           / (lastCredits + currentCredits)) / 100;
 
   if (isNaN(CPA)) {
-  	return;
+    return;
   }
 
   document.getElementById("cpa").innerHTML = CPA;
@@ -176,7 +180,7 @@ function getConversePoint(rank) {
 function getSubject() {
 
   let subject = {
-	name: "?",
+    name: "?",
     credit: 0.0,
     middleRate: 0.0,
     middlePoint: 0.0,
@@ -196,7 +200,7 @@ function getSubject() {
                             + subject.endPoint * (1 - subject.middleRate)) * 10) / 10;
   subject.rank = getSubjectRank(subject.point);
   if (subject.middleRate != 0) {
-  	if (subject.middlePoint < 3 || subject.endPoint < 3) subject.rank = "F";
+    if (subject.middlePoint < 3 || subject.endPoint < 3) subject.rank = "F";
   }
 
   subject.conversePoint = getConversePoint(subject.rank);
@@ -208,15 +212,15 @@ function getSubject() {
 function checkSubject(subject) {
 
   if (subject.name < 1)
-  	return false;
+    return false;
   if (subject.credit < 0 || isNaN(subject.credit))
-  	return false;
+    return false;
   if (subject.middleRate < 0 || subject.middleRate > 1 || isNaN(subject.middleRate))
-  	return false;
+    return false;
   if (subject.middlePoint < 0 || subject.middlePoint > 10 || isNaN(subject.middlePoint))
-  	return false;
+    return false;
   if (subject.endPoint < 0 || subject.endPoint > 10 || isNaN(subject.endPoint))
-  	return false;
+    return false;
 
   return true;
 }
@@ -225,7 +229,7 @@ function checkSubject(subject) {
 function checkSubmit() {
 
   let subject = {
-	name: "",
+    name: "",
     credit: 0,
     middleRate: 0.0,
     middlePoint: 0.0,
@@ -237,8 +241,8 @@ function checkSubmit() {
   let index = subjects.indexOf(subject);
 
   if (index != -1) {
-  	submit1.innerHTML = "sửa";
-  	return index;
+    submit1.innerHTML = "sửa";
+    return index;
   }
 
   submit1.innerHTML = "thêm";
@@ -249,7 +253,7 @@ function checkSubmit() {
 let content1 = document.getElementById("content-1");
 
 content1.onkeyup = function() {
-	checkSubmit();
+  checkSubmit();
 };
 
 
@@ -261,27 +265,27 @@ function addSubject() {
   let subject = getSubject();
 
   if (!checkSubject(subject)) {
-  	console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
-  	showStatus("có lỗi xảy ra");
-  	return;
+    console.log("Đã có lỗi xảy ra. Vui lòng kiểm tra lại.");
+    showStatus("có lỗi xảy ra");
+    return;
   }
 
   let index = checkSubmit();
 
   if (index != -1) {
-  	credits = credits - subjects[index].credit + subject.credit;
-  	creditPoints = creditPoints
-  	             - subjects[index].credit * subjects[index].conversePoint
-  	             + subject.credit * subject.conversePoint;
+    credits = credits - subjects[index].credit + subject.credit;
+    creditPoints = creditPoints
+                 - subjects[index].credit * subjects[index].conversePoint
+                 + subject.credit * subject.conversePoint;
     subjects[index] = subject;
     console.log("Đã sửa " + subject.name + ".");
     showStatus("đã sửa " + subject.name);
     console.table(subjects);
   }
   else {
-  	credits += subject.credit;
-  	creditPoints += subject.credit * subject.conversePoint;
-  	subjects.push(subject);
+    credits += subject.credit;
+    creditPoints += subject.credit * subject.conversePoint;
+    subjects.push(subject);
     console.log("Đã thêm " + subject.name + ".");
     showStatus("đã thêm " + subject.name);
     console.table(subjects);
@@ -292,7 +296,7 @@ function addSubject() {
 function deleteSubject() {
 
   let subject = {
-	name: "",
+    name: "",
     credit: 0,
     middleRate: 0.0,
     middlePoint: 0.0,
@@ -306,14 +310,14 @@ function deleteSubject() {
     credits = credits - subjects[index].credit;
     creditPoints = creditPoints
                  - subjects[index].credit * subjects[index].conversePoint;
-  	subjects.splice(index, 1);
-  	console.log("Đã xoá " + subject.name + ".");
-  	showStatus("đã xoá " + subject.name);
-  	console.table(subjects);
+    subjects.splice(index, 1);
+    console.log("Đã xoá " + subject.name + ".");
+    showStatus("đã xoá " + subject.name);
+    console.table(subjects);
   }
   else {
-  	console.log("Không tìm thấy " + subject.name + ".");
-  	showStatus("không tìm thấy " + subject.name);
+    console.log("Không tìm thấy " + subject.name + ".");
+    showStatus("không tìm thấy " + subject.name);
   }
 }
 
@@ -337,8 +341,8 @@ function display(id) {
   show(id);
 
   if (subjects.length == 0) {
-  	table.innerHTML = "o_o";
-  	return;
+    table.innerHTML = "o_o";
+    return;
   }
 
   const TR = "<tr>*</tr>";
@@ -348,22 +352,22 @@ function display(id) {
   table.innerHTML = TR.replace("*", TH);
 
   for (var i = 0; i < subjects.length; i++) {
-  	let tr = "";
-  	tr += TD.replace("*", subjects[i].name);
-  	tr += TD.replace("*", subjects[i].credit);
-  	tr += TD.replace("*",
-  		    "<div title=\"điểm quá trình (*)\">*</div>".replace("*", subjects[i].middleRate)
+    let tr = "";
+    tr += TD.replace("*", subjects[i].name);
+    tr += TD.replace("*", subjects[i].credit);
+    tr += TD.replace("*",
+          "<div title=\"điểm quá trình (*)\">*</div>".replace("*", subjects[i].middleRate)
                                                      .replace("*", subjects[i].middlePoint)
-  	    + " "
-  	    + "<div title=\"điểm kết thúc (*)\">*</div>".replace("*", 1 - subjects[i].middleRate)
+        + " "
+        + "<div title=\"điểm kết thúc (*)\">*</div>".replace("*", 1 - subjects[i].middleRate)
                                                     .replace("*", subjects[i].endPoint));
-  	tr += TD.replace("*", subjects[i].point);
-  	tr += TD.replace("*", subjects[i].rank);
-  	tr += TD.replace("*", "<div title=\"bấm để xoá\" "
-  		                + "class=\"x-delete\""
-  		                + "onclick=\"deleteSubjectById(#)\">x</div>")
-  	        .replace("#", i);
-  	table.innerHTML += TR.replace("*", tr);
+    tr += TD.replace("*", subjects[i].point);
+    tr += TD.replace("*", subjects[i].rank);
+    tr += TD.replace("*", "<div title=\"bấm để xoá\" "
+                      + "class=\"x-delete\""
+                      + "onclick=\"deleteSubjectById(#)\">x</div>")
+            .replace("#", i);
+    table.innerHTML += TR.replace("*", tr);
   }
 }
 
