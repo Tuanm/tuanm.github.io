@@ -117,7 +117,8 @@ var t = [
   },
 ];
 
-console.log("update: 2020/09/16");
+console.log("latest big update: 2020/09/16");
+alert("Contact TUAN for update!");
 
 /* ONLY EDIT ABOVE STUFF*/
 
@@ -165,7 +166,7 @@ function changeColor() {
 
 function getWeek(d) {
   var today = new Date(d.getFullYear(), d.getMonth() == 0 ? 12 : d.getMonth() + 1, d.getDate());
-  var startDay = new Date(2020, 9, 13);
+  var startDay = new Date(2020, 9, 18);
   var startWeek = 2;
   var milliSecDiff = Math.abs(today - startDay);
   var diff = Math.ceil(milliSecDiff
