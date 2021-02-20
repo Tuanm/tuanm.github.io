@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 html,
 body {
   height: 100%;
@@ -7,7 +9,7 @@ body {
 body {
   margin: 0;
   background: linear-gradient(45deg, #43cea2, #185a9d);
-  font-family: sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 100;
 }
 
@@ -42,7 +44,6 @@ tbody td {
 
 tbody td:hover:before {
   content: "";
-  position: absolute;
   left: 0;
   right: 0;
   top: -9999px;
@@ -57,15 +58,14 @@ tbody td::selection {
 
 span,
 body {
-  font-size: calc(0.25em + 1vw);
+  font-size: calc(0.5em + 0.75vw);
 }
 
 button {
   border: none;
-  display: block;
+  display: grid;
   text-align: center;
   cursor: pointer;
-  text-transform: uppercase;
   outline: none;
   overflow: hidden;
   position: relative;
@@ -74,7 +74,8 @@ button {
   background-color: #222;
   padding: 17px 60px;
   margin: 0 auto;
-  margin-top: 1em;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
   box-shadow: 0 5px 15px rgba(0,0,0,0.20);
 }
 
@@ -103,6 +104,7 @@ button:hover:after {
 }
 
 button:active {
+  transform: translateX(-50%);
   animation: scale-up .3s ease;
 }
 
@@ -117,15 +119,27 @@ button:active {
   }
 }
 
-.container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@keyframes disappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
-.transparent {
-  background: transparent;
+.overlay {
+  display: flex;
+  margin: auto;
+  transform: scaleX(2) scaleY(2);
+  animation: disappear 3s ease;
+}
+
+.container {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .draggable {

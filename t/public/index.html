@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
     <link rel="stylesheet" href="../src/style.css">
     <script src="../src/script.js" async></script>
     <title>Test</title>
@@ -11,16 +11,38 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
-  <!-- jQuery for draggable touch -->
-  <script src="../src/jquery-1.7.2.min.js"></script>
-  <script src="../src/jquery-ui.min.js"></script>
   <script>
-    var touchDevice = ('ontouchstart' in document.documentElement);
-    if (touchDevice) {
-        $('#container').draggable();
+    /* Request permission on page load */
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!Notification) {
+            alert('Desktop notifications not available in your browser. Try Chromium.');
+            return;
+        }
+
+        if (Notification.permission !== 'granted')
+            Notification.requestPermission();
+    });
+
+    /* View in fullscreen */
+    function openFullscreen() {
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+            document.documentElement.msRequestFullscreen();
+        }
     }
-    setInterval(() => {
-        var notif = new Notification("Test", { body: "Just a test!" });
-    }, 5000);
+
+    /* Close fullscreen */
+    function closeFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    }
   </script>
 </html>

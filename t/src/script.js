@@ -1,10 +1,31 @@
 let root = document.getElementById('root');
 
+const days = [
+    "Sunday", "Monday", "Tuesday", "Wednesday",
+    "Thursday", "Friday", "Saturday", "None",
+];
+
 var data = loadData();
 updateContainer();
 
 
+
+
 /* CREATE TABLE ELEMENTS */
+
+// function createSelect() {
+//     let select = document.createElement('select');
+//     days.forEach((day) => {
+//         let option = document.createElement('option');
+//         option.textContent = day;
+//         select.appendChild(option);
+//     });
+//     return select;
+// }
+
+function insertAfter(newChild, refChild) {
+    refChild.parentNode.insertBefore(newChild, refChild.nextSibling);
+}
 
 function createTHead() {
     function createTH(content, className) {
@@ -97,10 +118,6 @@ function createTable(data) {
 }
 
 function updateTable() {
-    function insertAfter(newChild, refChild) {
-        refChild.parentNode.insertBefore(newChild, refChild.nextSibling);
-    }
-
     let container = document.getElementById('container');
     let table = document.getElementById('table');
     container.removeChild(table);
@@ -120,7 +137,7 @@ function createContainer() {
     draggable.innerHTML = "#";
     let table = createTable(data);
     let button = document.createElement('button');
-    button.innerHTML = `<span>Save</span>`;
+    button.innerHTML = `<span>SAVE</span>`;
     button.onclick = () => {
         storeData();
     };
@@ -212,6 +229,10 @@ function getDataFromTable() {
     tbody.childNodes.forEach((tr) => {
         var tds = tr.childNodes;
         var day = tds[0].textContent;
+        if (!days.includes(day)) {
+            day = "None";
+            updateTable();
+        }
         var startTime = tds[1].childNodes[0].textContent;
         var endTime = tds[1].childNodes[2].textContent;
         var subject = tds[2].textContent;
@@ -230,5 +251,34 @@ function getDataFromTable() {
 
 
 
+/* Date filtering */
+
+function showOnlyToday() {
+    tbody.childNodes.forEach((tr) => {
+        var tds = tr.childNodes;
+        var day = tds[0].textContent;
+        if (day !== days[new Date().getDay()]) {
+            tr.hidden = !tr.hidden;
+        }
+    });
+}
 
 
+let filterButton = document.createElement('button');
+filterButton.innerHTML = "<span>TODAY</span>";
+filterButton.onclick = showOnlyToday;
+root.appendChild(filterButton);
+
+
+
+/* Pop-up */
+
+function showPopup(text) {
+    let overlay = document.createElement('button');
+    overlay.className = "overlay";
+    overlay.innerHTML = `<span>${text}</span>`;
+    root.insertBefore(overlay, document.getElementById('container'));
+    setTimeout(() => {
+        root.removeChild(overlay);
+    }, 3000);
+}
