@@ -19,5 +19,8 @@
     if (touchDevice) {
         $('#container').draggable();
     }
+    setInterval(() => {
+        var notif = new Notification("Test", { body: "Just a test!" });
+    }, 5000);
   </script>
 </html>
