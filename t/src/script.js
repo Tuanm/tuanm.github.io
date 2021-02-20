@@ -27,7 +27,8 @@ function createTHead() {
             subject: "None",
             room: "Home",
         });
-        updateContainer();
+        // updateContainer();
+        updateTable();
     };
     
     let tr = document.createElement('tr');
@@ -62,7 +63,8 @@ function createTBody(array) {
             if (index != -1) {
                 data.splice(index, 1);
             }
-            updateContainer();
+            // updateContainer();
+            updateTable();
         };
         time.appendChild(startTime);
         time.appendChild(createTD("-", false));
@@ -79,6 +81,7 @@ function createTBody(array) {
     };
 
     let tbody = document.createElement('tbody');
+    tbody.id = "tbody";
     array.forEach(element => {
         tbody.appendChild(createTR(element));
     });
@@ -87,9 +90,24 @@ function createTBody(array) {
 
 function createTable(data) {
     let table = document.createElement('table');
+    table.id = "table";
     table.appendChild(createTHead());
     table.appendChild(createTBody(data));
     return table;
+}
+
+function updateTable() {
+    function insertAfter(newChild, refChild) {
+        refChild.parentNode.insertBefore(newChild, refChild.nextSibling);
+    }
+
+    let container = document.getElementById('container');
+    let table = document.getElementById('table');
+    container.removeChild(table);
+    insertAfter(
+        createTable(data),
+        document.getElementById('draggable')
+    );
 }
 
 
@@ -100,8 +118,7 @@ function createContainer() {
     let draggable = document.createElement('div');
     draggable.id = draggable.className = "draggable";
     draggable.innerHTML = "#";
-    var table = createTable(data);
-    table.id = "table";
+    let table = createTable(data);
     let button = document.createElement('button');
     button.innerHTML = `<span>Save</span>`;
     button.onclick = () => {
@@ -154,7 +171,7 @@ function dragElement(element) {
 }
 
 function updateContainer() {
-    var container = document.getElementById('container');
+    let container = document.getElementById('container');
     if (container) {
         root.removeChild(container);
     }
@@ -178,15 +195,37 @@ function loadData() {
             },
         ];
     }
-    console.log("Data loaded.");
+    console.log("Data loaded from local storage.");
     return data;
 }
 
 function storeData() {
+    data = getDataFromTable();
     localStorage.setItem('data', JSON.stringify(data));
-    console.log("Data stored.");
+    console.log("Data stored in local storage.");
 }
 
+function getDataFromTable() {
+    let tbody = document.getElementById('tbody');
+    let data = [];
+    tbody.childNodes.forEach((tr) => {
+        var tds = tr.childNodes;
+        var day = tds[0].textContent;
+        var startTime = tds[1].childNodes[0].textContent;
+        var endTime = tds[1].childNodes[2].textContent;
+        var subject = tds[2].textContent;
+        var room = tds[3].textContent;
+        var element = {
+            day: day,
+            startTime: startTime,
+            endTime: endTime,
+            subject: subject,
+            room: room,
+        };
+        data.push(element);
+    });
+    return data;
+}
 
 
 
