@@ -167,7 +167,7 @@ function updateContainer() {
 
 function loadData() {
     let data = JSON.parse(localStorage.getItem('data'));
-    if (data) {
+    if (!data) {
         data = [
             {
                 day: "Sunday",
