@@ -167,6 +167,17 @@ function updateContainer() {
 
 function loadData() {
     let data = JSON.parse(localStorage.getItem('data'));
+    if (data) {
+        data = [
+            {
+                day: "Sunday",
+                startTime: "00:00",
+                endTime: "23:59",
+                subject: "None",
+                room: "Home",
+            },
+        ];
+    }
     console.log("Data loaded.");
     return data;
 }
