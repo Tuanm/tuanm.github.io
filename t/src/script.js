@@ -230,10 +230,12 @@ function loadData() {
             ],
         };
     }
-    let title = "Data loaded from local storage.";
-    let content = data.date;
-    new Notification(title, { body: content });
-    console.log(title);
+    else {
+        let title = "Data loaded from local storage.";
+        let content = data.date;
+        new Notification(title, { body: content });
+        console.log(title);
+    }
     return data.content;
 }
 
@@ -245,10 +247,12 @@ function storeData() {
         content: data,
     });
     localStorage.setItem('data', raw);
-    let title = "Data stored in local storage.";
-    let content = date;
-    new Notification(title, { body: content });
-    console.log(title);
+    if (true) {
+        let title = "Data stored in local storage.";
+        let content = date;
+        new Notification(title, { body: content });
+        console.log(title);
+    }
 }
 
 function getDataFromTable() {
