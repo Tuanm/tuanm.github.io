@@ -1,5 +1,3 @@
-console.log('latest update: 2020/02/23');
-
 let root = document.getElementById('root');
 
 const days = [
@@ -205,24 +203,38 @@ function updateContainer() {
 function loadData() {
     let data = JSON.parse(localStorage.getItem('data'));
     if (!data) {
-        data = [
-            {
-                day: "Sunday",
-                startTime: "00:00",
-                endTime: "23:59",
-                subject: "None",
-                room: "Home",
-            },
-        ];
+        data = {
+            date: new Date().toString().substr(0, 24),
+            content: [
+                {
+                    day: "Sunday",
+                    startTime: "00:00",
+                    endTime: "23:59",
+                    subject: "None",
+                    room: "Home",
+                },
+            ],
+        };
     }
-    console.log("Data loaded from local storage.");
-    return data;
+    let title = "Data loaded from local storage.";
+    let content = data.date;
+    new Notification(title, { body: content });
+    console.log(title);
+    return data.content;
 }
 
 function storeData() {
     data = getDataFromTable();
-    localStorage.setItem('data', JSON.stringify(data));
-    console.log("Data stored in local storage.");
+    let date = new Date().toString().substr(0, 24);
+    let raw = JSON.stringify({
+        date: date,
+        content: data,
+    });
+    localStorage.setItem('data', raw);
+    let title = "Data stored in local storage.";
+    let content = date;
+    new Notification(title, { body: content });
+    console.log(title);
 }
 
 function getDataFromTable() {
