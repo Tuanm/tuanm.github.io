@@ -327,19 +327,41 @@ function showPopup(text) {
 
 let request = new XMLHttpRequest();
 let header = document.querySelector('header');
+let dropdown = document.createElement('div');
+let input = document.createElement('input');
+header.appendChild(input);
+header.appendChild(dropdown);
 
-request.addEventListener('readystatechange', function () {
-    if (this.readyState == 4 && this.status == 200) {
-        storeDataFrom(this.responseText);
+
+dropdown.className = 'dropdown';
+dropdown.textContent = '▼';
+
+input.style.display = 'none';
+
+dropdown.addEventListener('click', function () {
+    if (input.style.display == 'none') {
+        dropdown.textContent = '▲';
+        input.style.display = 'inline-block';
     }
     else {
-        // new Notification('Error', { body: 'Request failed.' });
+        dropdown.textContent = '▼';
+        input.style.display = 'none';
     }
 });
 
 
-header.contentEditable = true;
-header.addEventListener('keydown', function (e) {
+request.addEventListener('readystatechange', function () {
+    try {
+        if (this.readyState == 4 && this.status == 200) {
+            storeDataFrom(this.responseText);
+        }
+    } catch (err) {
+        new Notification('Error', { body: 'o_o' });
+    }
+});
+
+
+input.addEventListener('keydown', function (e) {
     if (e.key == 'Enter') {
         e.preventDefault();
 
@@ -348,5 +370,7 @@ header.addEventListener('keydown', function (e) {
         request.send();
 
         e.target.textContent = '';
+        e.target.hidden = true;
     }
 });
+
