@@ -239,7 +239,7 @@ function loadData() {
     return data.content;
 }
 
-function storeData(raw) {
+function storeDataFrom(raw) {
     data = JSON.parse(raw);
     updateTable();
     storeData();
@@ -330,10 +330,10 @@ let header = document.querySelector('header');
 
 request.addEventListener('readystatechange', function () {
     if (this.readyState == 4 && this.status == 200) {
-        storeData(this.responseText);
+        storeDataFrom(this.responseText);
     }
     else {
-        new Notification('Error', { body: 'Request failed.' });
+        // new Notification('Error', { body: 'Request failed.' });
     }
 });
 
