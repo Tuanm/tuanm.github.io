@@ -1,3 +1,5 @@
+console.log('latest update: 2020/02/23');
+
 let root = document.getElementById('root');
 
 const days = [
