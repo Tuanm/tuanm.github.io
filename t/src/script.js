@@ -239,6 +239,12 @@ function loadData() {
     return data.content;
 }
 
+function storeData(raw) {
+    data = JSON.parse(raw);
+    updateTable();
+    storeData();
+}
+
 function storeData() {
     data = getDataFromTable();
     let date = new Date().toString().substr(0, 24);
@@ -314,3 +320,33 @@ function showPopup(text) {
         root.removeChild(overlay);
     }, 3000);
 }
+
+
+
+
+
+let request = new XMLHttpRequest();
+let header = document.querySelector('header');
+
+request.addEventListener('readystatechange', function () {
+    if (this.readyState == 4 && this.status == 200) {
+        storeData(this.responseText);
+    }
+    else {
+        new Notification('Error', { body: 'Request failed.' });
+    }
+});
+
+
+header.contentEditable = true;
+header.addEventListener('keydown', function (e) {
+    if (e.key == 'Enter') {
+        e.preventDefault();
+
+        let url = e.target.textContent;
+        request.open('GET', url, true);
+        request.send();
+
+        e.target.textContent = '';
+    }
+});

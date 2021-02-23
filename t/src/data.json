@@ -1,0 +1,73 @@
+[
+
+    {
+        "day": "Monday",
+        "startTime": "10:15",
+        "endTime": "11:45",
+        "subject": "Technical Writing and Presentation",
+        "room": "D6-101"
+    },
+    {
+        "day": "Tuesday",
+        "startTime": "12:30",
+        "endTime": "14:55",
+        "subject": "Các phương pháp tối ưu",
+        "room": "D6-102"
+    },
+    {
+        "day": "Tuesday",
+        "startTime": "15:05",
+        "endTime": "16:45",
+        "subject": "Các mô hình ngẫu nhiên và ứng dụng",
+        "room": "D6-102"
+    },
+    {
+        "day": "Wednesday",
+        "startTime": "12:30",
+        "endTime": "14:55",
+        "subject": "Hệ thống và mạng máy tính",
+        "room": "D6-103"
+    },
+    {
+        "day": "Wednesday",
+        "startTime": "15:05",
+        "endTime": "16:45",
+        "subject": "Phương trình đạo hàm riêng",
+        "room": "D6-103"
+    },
+    {
+        "day": "Thursday",
+        "startTime": "10:15",
+        "endTime": "11:45",
+        "subject": "Technical Writing and Presentation",
+        "room": "D6-101"
+    },
+    {
+        "day": "Thursday",
+        "startTime": "12:30",
+        "endTime": "15:50",
+        "subject": "Cơ sở dữ liệu ",
+        "room": "D6-102"
+    },
+    {
+        "day": "Thursday",
+        "startTime": "16:00",
+        "endTime": "17:30",
+        "subject": "Các mô hình ngẫu nhiên và ứng dụng",
+        "room": "D6-102"
+    },
+    {
+        "day": "Friday",
+        "startTime": "12:30",
+        "endTime": "14:55",
+        "subject": "Phương trình đạo hàm riêng",
+        "room": "D6-103"
+    },
+    {
+        "day": "Friday",
+        "startTime": "15:05",
+        "endTime": "16:45",
+        "subject": "Các phương pháp tối ưu",
+        "room": "D6-103"
+    }
+]
