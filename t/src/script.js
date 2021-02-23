@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadData() {
     let data = JSON.parse(localStorage.getItem('data'));
-    if (!data) {
+    if (!data || !data.content) {
         data = {
             date: new Date().toString().substr(0, 24),
             content: [
