@@ -365,7 +365,7 @@ input.addEventListener('keydown', function (e) {
     if (e.key == 'Enter') {
         e.preventDefault();
 
-        let url = e.target.textContent;
+        let url = e.target.value;
         request.open('GET', url, true);
         request.send();
 
