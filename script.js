@@ -1,7 +1,7 @@
 window.location.href = "#o_o";
 
 
-let o_o = document.getElementById("o_o");
+const o_o = document.getElementById("o_o");
 
 
 o_o.onclick = function() {
