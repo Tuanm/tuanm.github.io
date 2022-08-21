@@ -1,0 +1,27 @@
+body {
+    font-family: serif;
+    font-size: 400%;
+    background-color: #f2eecb;
+}
+
+header {
+    width: 90%;
+    margin: 10%;
+    margin-bottom: 1%;
+}
+
+main {
+    width: 90%;
+    margin: 10%;
+    margin-top: 3%;
+}
+
+a {
+    margin-left: 5%;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: white;
+}
