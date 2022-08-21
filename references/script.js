@@ -1,10 +1,11 @@
-const SOURCE_PATH = window.location.href + 'data.json';
+const SOURCE_PATH = window.location.origin + window.location.pathname + 'data.json';
 
 function generateLink(index, url, title, author = '') {
-    if (!url || !title) {
+    if (!url) {
         index = '-';
-        url = '#';
         title = '#';
+    } else if (!title) {
+        title = url;
     }
     const span = document.createElement('span');
     span.textContent = index;
@@ -33,7 +34,7 @@ async function loadData() {
 }
 
 loadData().then((data) => {
-    console.log('Data loaded.', data);
+    console.log('Data loaded.\n', data);
 }).catch((err) => {
-    console.log('Whoops! Something went wrong.', err?.message);
+    console.log('Whoops! Something went wrong.\n', err?.message);
 });
