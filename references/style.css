@@ -1,6 +1,6 @@
 body {
     font-family: serif;
-    font-size: 400%;
+    font-size: 300%;
     background-color: #f2eecb;
 }
 
@@ -12,12 +12,28 @@ header {
 
 main {
     width: 90%;
-    margin: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 3%;
+    margin-bottom: 10%;
+}
+
+main > div {
+    display: flex;
+    margin: 2%;
+}
+
+span {
+    position: relative;
+    width: 12%;
+}
+
+div > div {
+    position: relative;
+    width: 88%;
 }
 
 a {
-    margin-left: 5%;
     text-decoration: none;
     color: black;
 }
